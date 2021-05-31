@@ -1,11 +1,9 @@
-title: Your awesome title
+title: Let's write
 author:
-  name: GitHub User
-  email: your-email@domain.com
+  name: chandrahaas02
+  email: chandrahaas02@gmail.com
 description: > # this means to ignore newlines until "show_excerpts:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  learn together
 
 show_excerpts: false # set to true to show excerpts on the homepage
 
@@ -16,19 +14,19 @@ minima:
   skin: dark
   # generate social links in footer
   social_links:
-    twitter: jekyllrb
-    github:  jekyll
+    twitter: Chandrahaas02
+    github:  chandrahaas02
     # devto: jekyll
     # dribbble: jekyll
-    # facebook: jekyll
+    facebook: chandrahaas.vakkalagadda.1
     # flickr:   jekyll
     # instagram: jekyll
-    # linkedin: jekyll
+    linkedin: chandrahaas-vakkalagadda-05b909188
     # pinterest: jekyll
     # youtube: jekyll
     # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
     # youtube_channel_name: CloudCannon
-    # telegram: jekyll
+    telegram: Chandrahaas02
     # googleplus: +jekyll
     # microdotblog: jekyll
     # keybase: jekyll
