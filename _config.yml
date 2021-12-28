@@ -18,8 +18,8 @@ email: chandrahaas02@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A blog to write few things .
 twitter_username: Chandrahaas02
-github_username: chandrahaas02
-minimal_mistakes_skin: dark
+github_username: "chandrahaas02"
+minimal_mistakes_skin: "dark"
 search: true
 
 # Build settings
@@ -83,7 +83,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: false
+      author_profile: true
       read_time: true
       comments: true
       share: true
