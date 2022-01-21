@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "_posts/2022-01-02-obsidian.md",
+            "file": "_posts/2022-01-21-vscode.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2022-01-02-obsidian.md",
+                "file": "_posts/2022-01-21-vscode.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "4b2d30addb48f918",
   "lastOpenFiles": [
+    "_posts/2022-01-21-vscode.md",
     "_posts/2022-01-02-obsidian.md",
     "_posts/2021-12-27-good.md",
     "README.md",
@@ -97,7 +98,6 @@
     "_posts/2021-12-31-lastpost.md",
     "_posts/2021-08-20-god2.md",
     "_posts/2021-06-09-mini.md",
-    "_posts/2021-05-12-smart.md",
-    "_posts/2021-06-21-god1.md"
+    "_posts/2021-05-12-smart.md"
   ]
 }
