@@ -51,7 +51,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d55ad7eebd0f2707",
@@ -97,6 +98,7 @@
   "active": "ff9e6cf01c8f643a",
   "lastOpenFiles": [
     "_posts/2015-20-23-kanban.md",
+    "_posts/2022-02-25-obsidian.md",
     "_posts/2010-03-29-template.md",
     "_posts/2022-01-21-vscode.md",
     "Templates/2022-03-29-main.md",
@@ -104,7 +106,6 @@
     "_posts/2021-12-27-good.md",
     "README.md",
     "2022-01-02.md",
-    "_posts/2019-04-18-welcome-to-jekyll.md",
-    "_posts/2021-12-31-lastpost.md"
+    "_posts/2019-04-18-welcome-to-jekyll.md"
   ]
 }
