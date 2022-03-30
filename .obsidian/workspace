@@ -9,7 +9,7 @@
         "state": {
           "type": "kanban",
           "state": {
-            "file": "_posts/2015-20-23-kanban.md"
+            "file": "_posts/2015-10-23-kanban.md"
           }
         }
       }
@@ -51,8 +51,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d55ad7eebd0f2707",
@@ -68,7 +67,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2015-20-23-kanban.md",
+                "file": "_posts/2015-10-23-kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,7 +96,7 @@
   },
   "active": "ff9e6cf01c8f643a",
   "lastOpenFiles": [
-    "_posts/2015-20-23-kanban.md",
+    "_posts/2015-10-23-kanban.md",
     "_posts/2022-02-25-obsidian.md",
     "_posts/2010-03-29-template.md",
     "_posts/2022-01-21-vscode.md",
