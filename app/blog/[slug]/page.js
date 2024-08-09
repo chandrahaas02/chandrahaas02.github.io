@@ -17,11 +17,6 @@ export default async function Post({ params }) {
 
   return (
     <main className="text-xl sx:ml-20 space-y-5">
-      <div className="absolute sm:hidden">
-        <Link href="/blog">
-        <ChevronLeft />
-        </Link>
-      </div>
       <div className="max-w-prose flex flex-col justify-center mb-10 ml-3 p-5">
         <div className="underline text-3xl  flex felx-col">
           {post.title}
