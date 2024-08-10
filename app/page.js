@@ -1,14 +1,96 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client"
+import Image from "next/image";
+import { TickMark } from "@/components/Icon";
+import { SiReact, SiPrometheus,SiAmazonwebservices,SiKubernetes, SiGrafana, SiNodedotjs, SiPostgresql, SiGooglecloud, SiTensorflow, SiPytorch, SiPython} from '@icons-pack/react-simple-icons';
+
+const ExpCard = ({ props }) => {
+  const { name, company, description } = props
+  return (
+    <div className="card bg-primary shadow-3xl rounded-2xl max-w-2xl">
+      <div className="card-body">
+        <h2 className="card-title text-2xl">{name}</h2>
+        <p className="text-left">{company}</p>
+        <p className="text-left">{description}</p>
+      </div>
+    </div>
+  )
+}
 
 
 export default function Home() {
   return (
-    <div className="flex flex-1 items-center justify-center">
-      <div className="max-w-prose p-2 m-2">
-        Hello! I'm Chandrahaas, a DevOps Engineer passionate about crafting scalable and efficient systems that can handle whatever you throw at them. I recently graduated from IIT Hyderabad with a B.Tech in Artificial Intelligence, where I built a strong foundation in operating systems, data structures, and algorithms.
-        My journey in DevOps began at Storyxpress, where I've had the opportunity to implement security best practices, optimize cloud infrastructure, and even lead the migration of our Python templating engine. I thrive on tackling complex challenges and am always eager to learn and experiment with new technologies.
-        When I'm not immersed in code, you might find me exploring the latest tech trends, hiking, or trying to improve my astrophotography skills (the stars are the ultimate scalable system, right?).
-        Feel free to check out my projects and experience – and if you have an interesting challenge, let's connect!
+    <div className="flex flex-1 flex-col overflow-x-hidden">
+      <div className="hero  min-h-screen max-w-full">
+        <div className="hero-content flex-col lg:flex-row">
+          <Image src={"/haas.png"} unoptimized width={500} height={500} alt="me" />
+          <div>
+            <h1 className="text-4xl font-bold">Hello, I'm Chandrahaas <span className="wave">👋</span> </h1>
+            <h1 className="animate-typing overflow-hidden text-3xl  sm:text-6xl font-bold whitespace-nowrap text-green-500 pt-5 pb-5">Full Stack Engineer</h1>
+            <div className="flex flex-row gap-10 text-2xl">
+              Amateur philosopher. My life choices are a mystery even to me
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex pb-5 flex-col justify-center items-center">
+        <div className="text-3xl m-5">
+          Skills
+        </div>
+        <div className="w-screen sm:w-3/4 flex overflow-x-hidden">
+        <ul className="flex animate-infinite-scroll gap-10 py-4">
+          <li><SiReact color="default" size={100}/></li>
+          <li><SiPrometheus color="default" size={100}/></li>
+          <li><SiAmazonwebservices color="default" size={100}/></li>
+          <li><SiGrafana color="default" size={100}/></li>
+          <li><SiPostgresql color="default" size={100}/></li>
+          <li><SiNodedotjs color="default" size={100}/></li>
+          <li><SiKubernetes color="default" size={100}/></li>
+          <li><SiGooglecloud color="default" size={100}/></li>
+          <li><SiTensorflow color="default" size={100}/></li>
+          <li><SiPytorch color="default" size={100}/></li>
+          <li><SiPython color="default" size={100}/></li>
+          <li><SiReact color="default" size={100}/></li>
+          <li><SiPrometheus color="default" size={100}/></li>
+          <li><SiAmazonwebservices color="default" size={100}/></li>
+          <li><SiGrafana color="default" size={100}/></li>
+          <li><SiPostgresql color="default" size={100}/></li>
+          <li><SiNodedotjs color="default" size={100}/></li>
+          <li><SiKubernetes color="default" size={100}/></li>
+          <li><SiGooglecloud color="default" size={100}/></li>
+          <li><SiTensorflow color="default" size={100}/></li>
+          <li><SiPytorch color="default" size={100}/></li>
+          <li><SiPython color="default" size={100}/></li>
+        </ul>
+        </div>
+      </div>
+      <div id="exp" className="flex flex-col justify-center items-center  min-h-screen">
+        <h2 className="text-3xl self-center p-6">Work Experience</h2>
+        <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+          <li>
+            <TickMark />
+            <div className="timeline-start mb-10 md:text-end" data-aos="fade-right">
+              <ExpCard props={{ name: "Devops Engineer", company: "StoryXpress", description: "Optimized infrastructure and deployment through Kubernetes migration, GitOps Stratergy, and continuous monitoring. Led development of AI tools for image recognition, text transcription, and product content generation." }} />
+            </div>
+            <hr />
+          </li>
+          <li>
+            <hr />
+            <TickMark />
+            <div className="timeline-end mb-10" data-aos="fade-left">
+              <ExpCard props={{ name: "Data Science Intern", company: "I'm beside You", description: "Designed a Recomendation System using collabrative filters and explored several DL based approaches" }} />
+            </div>
+            <hr />
+          </li>
+          <li>
+            <hr />
+            <TickMark />
+            <div className="timeline-start mb-10 md:text-end" data-aos="fade-right">
+              <ExpCard props={{ name: "Service Provider", company: "Willings", description: "Created a one-stop destination for Japanese wall art by crawling across brochures of major wallpaper companies. Designed user and admin portals and implemented a database to store and manage data." }} />
+            </div>
+            <hr />
+          </li>
+        </ul>
       </div>
     </div>
   );

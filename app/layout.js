@@ -1,7 +1,7 @@
 "use client"
 import "./globals.css";
 
-import { Home, Blog, Tools, Games, Github, Linkdin, Mail , Hamburger} from "../components/Icon"
+import { Home, Blog, Tools, Games, Github, Linkdin, Mail} from "../components/Icon"
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="relative flex flex-col sm:flex-row h-full min-h-screen w-full">
         <Navbar />
-        <div className="flex flex-1 w-full">
+        <div className="flex flex-1 w-full overflow-y-auto max-h-screen">
           {children}
         </div>
       </body>
