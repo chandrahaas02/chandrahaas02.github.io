@@ -2,18 +2,12 @@ import SideBarTools from "@/components/SideBarTools"
 
 const allTools = [
     {
-      title: "Home",
-      description:"Home",
-      path : "/"
-
-    },
-    {
       title: "Base 64 Tools",
       description: "Base64 encoder decoder",
       path: "/base64"
     },
     {
-      title: "JSON viewer",
+      title: "JSON Tools",
       description: "Prettify JSON",
       path: "/json"
     },
@@ -24,11 +18,11 @@ const allTools = [
     }
   ]
 
-export default function BlogLayout({ children }) {
+export default function ToolsLayout({ children }) {
     return (
         <div className="flex w-full">
             <SideBarTools allTools={allTools}/>
-            <div className="flex flex-1 overflow-y-auto justify-center max-h-screen space-y-5" >
+            <div className="flex flex-1 overflow-y-auto space-y-5" >
                 {children}
             </div>
         </div>
