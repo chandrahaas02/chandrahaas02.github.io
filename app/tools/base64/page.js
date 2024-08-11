@@ -5,12 +5,16 @@ import { useState, useEffect } from "react"
 
 export default function Base64() {
     const [encode, setEncode] = useState(false)
-    const [input, setInput] = useState(localStorage.getItem("base64Input")|| "")
+    const [input, setInput] = useState("")
     const [output, setOutput] = useState("")
 
     useEffect(()=>{
+        setInput(input=> localStorage.getItem("base64Input"))
+    },[])
+
+    useEffect(()=>{
         return () => {
-            localStorage.setItem("base64Input",input)
+            window.localStorage.setItem("base64Input",input)
         }
     })
 

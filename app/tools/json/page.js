@@ -2,12 +2,16 @@
 import { useState, useEffect } from "react"
 
 export default function JsonConvertor() {
-    const [input,setInput] = useState(localStorage.getItem("jsonInput")|| "")
+    const [input,setInput] = useState("")
     const [output,setOutput] = useState("")
 
     useEffect(()=>{
+        setInput(input=> localStorage.getItem("jsonInput"))
+    },[])
+
+    useEffect(()=>{
         return () => {
-            localStorage.setItem("jsonInput",input)
+            window.localStorage.setItem("jsonInput",input)
         }
     })
 
