@@ -1,7 +1,7 @@
 "use client"
 import "./globals.css";
 
-import { Home, Blog, Tools, Games, Github, Linkdin, Mail} from "../components/Icon"
+import { Home, Blog, Tools, Games, Github, Linkdin, Mail, Phil} from "../components/Icon"
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
@@ -23,10 +23,10 @@ function Navbar() {
       <div className="flex-none flex flex-row sm:flex-col sm:min-h-screen bg-neutral-900 border-r border-neutral-700 overflow-hidden">
         <div className="sm:flex-1 flex sm:flex-col max-sm:w-full max-sm:justify-between">
           <NavbarItem link={"/"} active={pathname === '/' ? 'active' : ''}><Home/></NavbarItem>
-          <NavbarItem link={"/blog"} active={pathname == '/blog/.*' ? 'active' : ''}><Blog /></NavbarItem>
-          <NavbarItem link={"/tools"}active={pathname === '/tools' ? 'active' : ''}><Tools /></NavbarItem>
-          <NavbarItem link={"/games"}active={pathname === '/games' ? 'active' : ''}><Games /></NavbarItem>
-
+          <NavbarItem link={"/blog"} active={pathname.split("/")[1] == 'blog' ? 'active' : ''}><Blog /></NavbarItem>
+          <NavbarItem link={"/tools"}active={pathname.split("/")[1] === 'tools' ? 'active' : ''}><Tools /></NavbarItem>
+          <NavbarItem link={"/games"}active={pathname.split("/")[1] === 'games' ? 'active' : ''}><Games /></NavbarItem>
+          <NavbarItem link={"/phil"}active={pathname.split("/")[1] === 'phil' ? 'active' : ''}><Phil /></NavbarItem>
         </div>
         <div className="hidden sm:flex sm:flex-col flex-none">
           <div className="p-5"><Link href="https://github.com/chandrahaas02"><Github/></Link></div>
