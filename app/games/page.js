@@ -1,7 +1,7 @@
 export default function Home() {
     return (
-      <h1>
-        Comming Soon !!
-      </h1>
+      <div className="flex m-10 items-center">
+        Random Games
+      </div>
     );
   }

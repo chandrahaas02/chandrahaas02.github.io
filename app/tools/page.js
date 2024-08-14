@@ -1,7 +1,8 @@
 export default function Home() {
     return (
-      <h1>
-        Good morning from tools
-      </h1>
+      <div className="flex text-primary-content text-3xl items-center justify-center w-full">
+        Welcome to tools
+      </div>
+
     );
 }

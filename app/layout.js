@@ -20,7 +20,7 @@ function Navbar() {
   const pathname = usePathname()
   return (
     <>
-      <div className="flex-none flex flex-row sm:flex-col sm:min-h-screen bg-neutral-900 border-r border-neutral-700 overflow-hidden">
+      <div className="flex-none flex flex-row sm:flex-col sm:min-h-screen border-r border-neutral-700 overflow-hidden">
         <div className="sm:flex-1 flex sm:flex-col max-sm:w-full max-sm:justify-between">
           <NavbarItem link={"/"} active={pathname === '/' ? 'active' : ''}><Home/></NavbarItem>
           <NavbarItem link={"/blog"} active={pathname.split("/")[1] == 'blog' ? 'active' : ''}><Blog /></NavbarItem>

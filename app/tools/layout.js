@@ -21,7 +21,7 @@ const allTools = [
 export default function ToolsLayout({ children }) {
     return (
         <div className="flex w-full">
-            <SideBarTools allTools={allTools}/>
+            <SideBarTools allTools={allTools} prefix={"tools"}/>
             <div className="flex flex-1 overflow-y-auto space-y-5" >
                 {children}
             </div>
