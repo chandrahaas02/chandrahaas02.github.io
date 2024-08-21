@@ -15,6 +15,11 @@ const allTools = [
       title: "Cron Job",
       description: "Explains Cron Schedule",
       path: "/cron"
+    },
+    {
+      title:"Markdown Editor",
+      description: "markdown editor",
+      path:"/markdown"
     }
   ]
 

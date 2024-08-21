@@ -2,7 +2,7 @@
 import { getAllPosts, getPostBySlug } from "@/utils/posts";
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import markdownStyles from "./markdown-styles.module.css";
+import markdownStyles from "@/utils/markdown-styles.module.css";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
