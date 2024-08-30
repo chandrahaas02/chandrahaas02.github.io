@@ -25,13 +25,12 @@ function Navbar() {
           <NavbarItem link={"/"} active={pathname === '/' ? 'active' : ''}><Home /></NavbarItem>
           <NavbarItem link={"/blog"} active={pathname.split("/")[1] == 'blog' ? 'active' : ''}><Blog /></NavbarItem>
           <NavbarItem link={"/tools"} active={pathname.split("/")[1] === 'tools' ? 'active' : ''}><Tools /></NavbarItem>
-          <NavbarItem link={"/games"} active={pathname.split("/")[1] === 'games' ? 'active' : ''}><Games /></NavbarItem>
           <NavbarItem link={"/phil"} active={pathname.split("/")[1] === 'phil' ? 'active' : ''}><Phil /></NavbarItem>
         </div>
         <div className="hidden sm:flex sm:flex-col flex-none">
-          <div className="p-5"><Link href="https://github.com/chandrahaas02"><Github /></Link></div>
-          <div className="p-5"><Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/"><Linkdin /></Link></div>
-          <div className="p-5"><Link href="mailto:chandrahaas02@gmail.com"><Mail /></Link></div>
+          <div className="p-5"><Link href="https://github.com/chandrahaas02" target="_blank"><Github /></Link></div>
+          <div className="p-5"><Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/" target="_blank"><Linkdin /></Link></div>
+          <div className="p-5"><Link href="mailto:chandrahaas02@gmail.com" target="_blank"><Mail /></Link></div>
         </div>
       </div>
     </>

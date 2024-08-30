@@ -2,6 +2,8 @@
 "use client"
 import Image from "next/image";
 import { TickMark } from "@/components/Icon";
+import Link from 'next/link'
+import {Github, Linkdin, Mail} from "../components/Icon"
 import { SiReact, SiPrometheus,SiAmazonwebservices,SiKubernetes, SiGrafana, SiNodedotjs, SiPostgresql, SiGooglecloud, SiTensorflow, SiPytorch, SiPython} from '@icons-pack/react-simple-icons';
 
 const ExpCard = ({ props }) => {
@@ -30,6 +32,11 @@ export default function Home() {
             <div className="flex flex-row gap-10 text-2xl">
               Amateur philosopher. My life choices are a mystery even to me
             </div>
+            <div className="flex w-full sm:hidden">
+          <div className="pt-5 pr-5"><Link href="https://github.com/chandrahaas02" target="_blank"><Github /></Link></div>
+          <div className="p-5"><Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/" target="_blank"><Linkdin /></Link></div>
+          <div className="p-5"><Link href="mailto:chandrahaas02@gmail.com" target="_blank"><Mail /></Link></div>
+        </div>
           </div>
         </div>
       </div>
@@ -37,8 +44,8 @@ export default function Home() {
         <div className="text-3xl m-5">
           Skills
         </div>
-        <div className="w-screen sm:w-3/4 flex overflow-x-hidden">
-        <ul className="flex animate-infinite-scroll gap-10 py-4">
+        <div className="w-screen sm:w-3/4 flex overflow-x-hidden py-7">
+        <ul className="flex animate-infinite-scroll gap-10">
           <li><SiReact color="default" size={100}/></li>
           <li><SiPrometheus color="default" size={100}/></li>
           <li><SiAmazonwebservices color="default" size={100}/></li>

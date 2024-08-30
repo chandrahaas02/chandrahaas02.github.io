@@ -20,6 +20,10 @@ const allTools = [
       title:"Markdown Editor",
       description: "markdown editor",
       path:"/markdown"
+    },
+    {
+      title :"Tic Tac toe",
+      path:"/tic"
     }
   ]
 
