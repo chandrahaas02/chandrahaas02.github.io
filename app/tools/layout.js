@@ -22,8 +22,12 @@ const allTools = [
       path:"/markdown"
     },
     {
-      title :"Tic Tac toe",
+      title: "Tic Tac toe",
       path:"/tic"
+    },
+    {
+      title: "Screen Recorder",
+      path:"/recorder"
     }
   ]
 
