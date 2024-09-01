@@ -32,7 +32,7 @@ function Board({ xIsNext, squares, onPlay }) {
     }
 
     return (
-        <div className='flex flex-col m-5 items-center w-full'>
+        <div className='flex flex-col w-screen items-center p-5 bg-neutral-950'>
             <div className={`flex alert ${winner ? 'alert-success' : ''} text-2xl justify-center rounded-full`}>{status}</div>
             <div className='mt-5 mb-5 flex flex-col'>
                 <div className="board-row">

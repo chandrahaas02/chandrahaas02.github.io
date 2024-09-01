@@ -146,7 +146,7 @@ export default function ScreenRecorder() {
     }, [])
 
     return (
-        <div className="flex flex-col w-full items-center m-5">
+        <div className="flex flex-col w-screen items-center p-5 bg-neutral-950">
             <div className="flex-1 flex flex-col w-full items-center">
                 <span className="text-3xl text-primary-content">Hello From ScreenRecorder</span>
                 <div className="flex gap-5">

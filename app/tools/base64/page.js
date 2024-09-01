@@ -35,7 +35,7 @@ export default function Base64() {
     }
 
     return (
-        <div className="flex flex-col w-full items-center m-5">
+        <div className="flex flex-col w-screen items-center p-5 bg-neutral-950">
             <div className="flex items-center">
                 <div className="text-2xl">Decode</div>
                 <input type="checkbox" className="toggle rounded-full m-5" onChange={toggleSwitch} />

@@ -107,7 +107,7 @@ export default function JsonConvertor() {
 
 
     return (
-        <div className="flex flex-col w-full items-center justify-center m-5">
+        <div className="flex flex-col w-screen items-center justify-center p-5 bg-neutral-950">
             {output && <span className={`text-5xl m-5 ${error? "text-error": "text-success"}`} >{output}</span>}
             <textarea type="text" placeholder="Type here"
             className="textarea textarea-bordered rounded-full text-5xl text-center box-border" onChange={handleInput}/>

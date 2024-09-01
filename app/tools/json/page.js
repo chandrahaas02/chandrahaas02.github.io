@@ -35,7 +35,7 @@ export default function JsonConvertor() {
     }
 
     return (
-        <div className="flex flex-col w-full items-center m-5">
+        <div className="flex flex-col w-screen items-center p-5 bg-neutral-950">
             <div>
             <button className="btn btn-primary rounded-full m-5" onClick={jsonPrettify}>Prettify</button>
             <button className="btn btn-primary rounded-full m-5" onClick={copyref}>Copy Reference</button>
