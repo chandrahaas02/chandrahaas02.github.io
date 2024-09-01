@@ -4,9 +4,15 @@
         <title>Blog posts | RSS Feed</title>
         <link>localhost:3000</link>
         <description>Welcome to this blog posts!</description>
-        <lastBuildDate>Sun, 11 Aug 2024 11:00:04 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 01 Sep 2024 06:14:21 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
+        <item>
+            <title><![CDATA[Exploring tools on new Blog]]></title>
+            <link>localhost:3000/blog/tools</link>
+            <guid>localhost:3000/blog/tools</guid>
+            <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[A talk on video bandwidth]]></title>
             <link>localhost:3000/blog/temporal</link>
