@@ -6,7 +6,9 @@ import { Feed } from 'feed';
 const postsDirectory = join(process.cwd(), "_posts");
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+  return fs.readdirSync(postsDirectory,{ withFileTypes: true })
+  .filter(dirent => dirent.isFile())
+  .map(dirent => dirent.name);;
 }
 
 export function getPostBySlug(slug) {

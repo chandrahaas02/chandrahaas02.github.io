@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { TickMark } from "@/components/Icon";
 import Link from 'next/link'
-import {Github, Linkdin, Mail} from "../components/Icon"
+import {Github, Linkedin, Mail} from "lucide-react"
 import { SiReact, SiPrometheus,SiAmazonwebservices,SiKubernetes, SiGrafana, SiNodedotjs, SiPostgresql, SiGooglecloud, SiTensorflow, SiPytorch, SiPython} from '@icons-pack/react-simple-icons';
 
 const ExpCard = ({ props }) => {
@@ -34,7 +34,7 @@ export default function Home() {
             </div>
             <div className="flex w-full sm:hidden">
           <div className="pt-5 pr-5"><Link href="https://github.com/chandrahaas02" target="_blank"><Github /></Link></div>
-          <div className="p-5"><Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/" target="_blank"><Linkdin /></Link></div>
+          <div className="p-5"><Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/" target="_blank"><Linkedin /></Link></div>
           <div className="p-5"><Link href="mailto:chandrahaas02@gmail.com" target="_blank"><Mail /></Link></div>
         </div>
           </div>

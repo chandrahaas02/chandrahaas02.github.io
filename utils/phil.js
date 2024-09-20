@@ -5,7 +5,9 @@ import { join } from "path";
 const postsDirectory = join(process.cwd(), "_phil");
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+  return fs.readdirSync(postsDirectory,{ withFileTypes: true })
+  .filter(dirent => dirent.isFile())
+  .map(dirent => dirent.name);;
 }
 
 export function getPostBySlug(slug) {
