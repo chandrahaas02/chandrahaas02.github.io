@@ -48,10 +48,11 @@ export default function JsonConvertor() {
         }
 
         if (image) {
-            const convertedBuffer = await await image.getBase64(mimeType);
+            const convertedBuffer = await image.getBase64(mimeType);
             setSelectedImagePreview(convertedBuffer)
         }
-    },[format,image])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <div className="flex flex-col w-screen items-center p-5 bg-neutral-950">
