@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect, useCallback } from "react"
-import { Jimp } from "jimp";
 
 export default function JsonConvertor() {
     const [selectedFile, setSelectedFile] = useState(null)
@@ -14,12 +13,7 @@ export default function JsonConvertor() {
         }
         let reader = new FileReader()
         reader.onloadend = async () => {
-            // setSelectedImagePreview(reader.result)
-            const image = await Jimp.read(reader.result)
-            setImage(image)
-            const base64 = await image.getBase64("image/jpeg");
-            setSelectedImagePreview(base64)
-
+            setSelectedImagePreview(reader.result)
         }
         reader.readAsDataURL(event.target.files[0])
     }, [])
@@ -35,23 +29,6 @@ export default function JsonConvertor() {
 
     const changeFormat = useCallback(async (e) => {
         setFormat(format => e.target.value);
-        let mimeType
-        switch (format) {
-            case 'png':
-                mimeType = "image/png"
-                break
-            case 'bmp':
-                mimeType = "image/bmp"
-                break
-            default:
-                mimeType = "image/jpeg"
-        }
-
-        if (image) {
-            const convertedBuffer = await image.getBase64(mimeType);
-            setSelectedImagePreview(convertedBuffer)
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return (
