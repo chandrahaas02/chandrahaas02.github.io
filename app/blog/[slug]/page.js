@@ -17,7 +17,7 @@ export default async function Post({ params }) {
   return (
     <main className="text-xl sx:ml-20 space-y-5 bg-neutral-950">
       <div className="max-w-prose flex flex-col justify-center mb-10 ml-3 p-5">
-        <div className="underline text-3xl text-primary-content  flex felx-col">
+        <div className="underline text-3xl text-primary  flex felx-col">
           {post.title}
         </div>
         <div className="text-neutral-500 pb-5 text-lg">

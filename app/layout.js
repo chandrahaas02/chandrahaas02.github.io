@@ -1,7 +1,6 @@
 "use client"
 import "./globals.css";
 
-import { Home, Blog, Tools, Games, Phil } from "../components/Icon"
 import {House, NotebookPen,Wrench,Cannabis,Github, Linkedin, Mail} from "lucide-react"
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'

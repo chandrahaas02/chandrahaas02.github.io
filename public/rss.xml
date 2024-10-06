@@ -4,7 +4,7 @@
         <title>Blog posts | RSS Feed</title>
         <link>localhost:3000</link>
         <description>Welcome to this blog posts!</description>
-        <lastBuildDate>Sat, 21 Sep 2024 02:47:23 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 06 Oct 2024 12:54:10 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <item>

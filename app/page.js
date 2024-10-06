@@ -9,7 +9,7 @@ import { SiReact, SiPrometheus,SiAmazonwebservices,SiKubernetes, SiGrafana, SiNo
 const ExpCard = ({ props }) => {
   const { name, company, description } = props
   return (
-    <div className="card bg-primary shadow-3xl rounded-2xl max-w-2xl">
+    <div className="card bg-primary-content shadow-3xl rounded-2xl max-w-2xl">
       <div className="card-body">
         <h2 className="card-title text-2xl">{name}</h2>
         <p className="text-left">{company}</p>
