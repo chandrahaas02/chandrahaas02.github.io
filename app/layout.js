@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
-      <body className="relative flex flex-col-reverse sm:flex-row h-full min-h-screen w-full">
+      <body className="relative flex flex-col-reverse sm:flex-row">
         <Navbar />
         <div className="flex flex-1 w-full overflow-y-auto max-h-screen pb-20 sm:pb-0">
           {children}
