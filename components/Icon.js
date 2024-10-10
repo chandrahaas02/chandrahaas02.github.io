@@ -34,7 +34,7 @@ export function Hamburger() {
 }
 
 export const TickMark = () => {
-    return (<div className="timeline-middle rounded-full background bg-secondary p-3">
+    return (<div className="timeline-middle rounded-full bg-neutral-700 p-3">
         <svg xmlns="http://www.w3.org/2000/svg"
         width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
