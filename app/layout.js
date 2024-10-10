@@ -1,7 +1,7 @@
 "use client"
 import "./globals.css";
 
-import {House, NotebookPen,Wrench,Github, Linkedin, Mail} from "lucide-react"
+import { House, NotebookPen, Wrench, Github, Linkedin, Mail } from "lucide-react"
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
@@ -20,10 +20,10 @@ function Navbar() {
   const pathname = usePathname()
   return (
     <>
-      <div className="flex-none flex flex-row sm:flex-col sm:min-h-screen border-r border-r-neutral-900 overflow-hidden">
+      <div className="fixed z-10 min-w-full sm:min-w-0 bg-black sm:static flex-none flex flex-row sm:flex-col sm:min-h-screen border-r border-r-neutral-900 overflow-hidden">
         <div className="sm:flex-1 flex sm:flex-col max-sm:w-full max-sm:justify-between">
           <NavbarItem link={"/"} active={pathname === '/' ? 'active' : ''}><House /></NavbarItem>
-          <NavbarItem link={"/blog"} active={pathname.split("/")[1] == 'blog' ? 'active' : ''}><NotebookPen/></NavbarItem>
+          <NavbarItem link={"/blog"} active={pathname.split("/")[1] == 'blog' ? 'active' : ''}><NotebookPen /></NavbarItem>
           <NavbarItem link={"/tools"} active={pathname.split("/")[1] === 'tools' ? 'active' : ''}><Wrench /></NavbarItem>
         </div>
         <div className="hidden sm:flex sm:flex-col flex-none">
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Chandrahaas</title>
       </head>
-      <body className="relative flex flex-col sm:flex-row h-full min-h-screen w-full">
+      <body className="relative flex pb-20 sm:pb-0 flex-col-reverse sm:flex-row h-full min-h-screen w-full">
         <Navbar />
         <div className="flex flex-1 w-full overflow-y-auto max-h-screen">
           {children}
