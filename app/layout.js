@@ -41,10 +41,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <title>Chandrahaas</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
-      <body className="relative flex pb-20 sm:pb-0 flex-col-reverse sm:flex-row h-full min-h-screen w-full">
+      <body className="relative flex flex-col-reverse sm:flex-row h-full min-h-screen w-full">
         <Navbar />
-        <div className="flex flex-1 w-full overflow-y-auto max-h-screen">
+        <div className="flex flex-1 w-full overflow-y-auto max-h-screen pb-20 sm:pb-0">
           {children}
         </div>
       </body>
