@@ -20,7 +20,7 @@ function Navbar() {
   const pathname = usePathname()
   return (
     <>
-      <div className="fixed z-10 min-w-full sm:min-w-0 bg-black sm:static flex-none flex flex-row sm:flex-col sm:min-h-screen border-r border-r-neutral-900 overflow-hidden">
+      <div className="fixed z-10 bottom-0 min-w-full sm:min-w-0 bg-black sm:static flex-none flex flex-row sm:flex-col sm:min-h-screen border-r border-r-neutral-900 overflow-hidden">
         <div className="sm:flex-1 flex sm:flex-col max-sm:w-full max-sm:justify-between">
           <NavbarItem link={"/"} active={pathname === '/' ? 'active' : ''}><House /></NavbarItem>
           <NavbarItem link={"/blog"} active={pathname.split("/")[1] == 'blog' ? 'active' : ''}><NotebookPen /></NavbarItem>
@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
-      <body className="relative flex flex-col-reverse sm:flex-row">
+      <body className="relative flex flex-col-reverse sm:flex-row h-full min-h-screen w-full">
         <Navbar />
         <div className="flex flex-1 w-full overflow-y-auto max-h-screen pb-20 sm:pb-0">
           {children}
