@@ -33,7 +33,7 @@ const allTools = [
     path: "/recorder"
   },
   {
-    title:"image Converter",
+    title:"Image Converter",
     path:"/image"
   }
 ]
