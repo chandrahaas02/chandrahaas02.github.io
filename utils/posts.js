@@ -2,6 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { join } from "path";
 import { Feed } from 'feed';
+import lunr from "lunr";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -27,6 +28,19 @@ export function getAllPosts() {
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
+}
+
+export function createIndex() {
+  const allPosts = getAllPosts();
+  const index = lunr(function(){
+    this.ref("slug")
+    this.field("title")
+    this.field("content")
+    allPosts.forEach(function (post) {
+      this.add(post)
+    }, this)
+  })
+  return index
 }
 
 export function generateRSSFeed() {
