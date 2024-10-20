@@ -33,7 +33,6 @@ export default function SideBarBlog({ allPosts, prefix, index }) {
     const handleChange = (e) => {
         console.log(e.target.value)
         const results = queryIndex.search(e.target.value)
-        console.log(results)
         matchPosts(results)
     }
 
