@@ -5,7 +5,6 @@ export default function JsonConvertor() {
     const [selectedFile, setSelectedFile] = useState(null)
     const [selectedImagePreview, setSelectedImagePreview] = useState(null)
     const [format, setFormat] = useState('jpeg')
-    const [image, setImage] = useState(null)
 
     const handleFileChange = useCallback((event) => {
         if (event.target.files && event.target.files[0]) {

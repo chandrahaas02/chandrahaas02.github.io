@@ -55,6 +55,7 @@ export default function ScreenRecorder() {
             mediaRecorder.ondataavailable = (event) => {
                 if (outputVideoRef.current) {
                     outputVideoRef.current.src = URL.createObjectURL(event.data)
+                    outputVideoRef.current.className ="flex"
                 }
             }
 
@@ -148,16 +149,16 @@ export default function ScreenRecorder() {
     return (
         <div className="flex flex-col w-screen items-center p-5 bg-neutral-950">
             <div className="flex-1 flex flex-col w-full items-center">
-                <span className="text-3xl text-primary-content">Hello From ScreenRecorder</span>
+                <span className="text-3xl text-primary">Hello From ScreenRecorder</span>
                 <div className="flex gap-5">
                     <button className="btn my-5 rounded-xl btn-primary" onClick={handleRecord}>{recording ? "Stop" : "Start"}</button>
                     <button className="btn my-5 rounded-xl btn-primary" onClick={handleCamera}>{camEnable ? "No Camera" : "Use Camera"}</button>
                 </div>
                 {!recording && (<div className="flex flex-col items-center">
-                    <video id="recorded-media" ref={outputVideoRef} controls></video>
+                    <video id="recorded-media" ref={outputVideoRef} controls className="hidden"></video>
                 </div>)}
                 <div className="aspect-video">
-                    <video id="camFeed" ref={cameraVideoRef} autoPlay muted></video>
+                    <video id="camFeed" ref={cameraVideoRef} autoPlay muted className="w-64"></video>
                     <video id="desktopFeed" ref={screenVideoRef} autoPlay muted className="hidden"></video>
                 </div>
             </div>
