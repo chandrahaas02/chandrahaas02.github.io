@@ -4,6 +4,7 @@ import "./globals.css";
 import { House, NotebookPen, Wrench, Github, Linkedin, Mail, FileDown } from "lucide-react"
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 
 function NavbarItem({ children, link, active }) {
@@ -51,6 +52,7 @@ export default function RootLayout({ children }) {
           {children}
         </div>
       </body>
+      <GoogleAnalytics gaId="G-MWSNV0NHZE" />
     </html>
   );
 }
