@@ -45,6 +45,7 @@ export default function RootLayout({ children }) {
         <title>Chandrahaas</title>
         <meta charSet="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <meta name="google-site-verification" content="pPVFaBYMsDHl5EBXaTbJNmdH1ng0BRBQ9fiVyG2ELC0" />
       </head>
       <body className="relative flex flex-col-reverse sm:flex-row h-full min-h-screen w-full">
         <Navbar />
