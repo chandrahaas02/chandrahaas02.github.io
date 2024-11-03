@@ -45,7 +45,7 @@ export function createIndex() {
 
 export function generateRSSFeed() {
   const allPosts = getAllPosts();
-  const site_url = 'localhost:3000';
+  const site_url = 'https://chandrahaas02.github.io';
 
   const feedOptions = {
     title: 'Blog posts | RSS Feed',
