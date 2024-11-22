@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { TickMark } from "@/components/Icon";
 import Link from 'next/link'
-import {Github, Linkedin, Mail} from "lucide-react"
-import { SiReact, SiPrometheus,SiAmazonwebservices,SiKubernetes, SiGrafana, SiNodedotjs, SiPostgresql, SiGooglecloud, SiTensorflow, SiPytorch, SiPython} from '@icons-pack/react-simple-icons';
+import { useState, useEffect } from "react"
+import { Github, Linkedin, Mail } from "lucide-react"
+import { SiReact, SiPrometheus, SiAmazonwebservices, SiKubernetes, SiGrafana, SiNodedotjs, SiPostgresql, SiGooglecloud, SiTensorflow, SiPytorch, SiPython } from '@icons-pack/react-simple-icons';
 
 const ExpCard = ({ props }) => {
   const { name, company, description } = props
@@ -21,22 +22,44 @@ const ExpCard = ({ props }) => {
 
 
 export default function Home() {
+
+  const [country, setCountry] = useState("IN")
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      try {
+        const response = await fetch('https://ipinfo.io/?token=8266cf5458e902');
+        if (response.ok) {
+          const data = await response.json();
+          setCountry(data.country)
+        }
+      } catch (error) {
+        console.error('Error fetching location data:', error);
+      }
+    };
+    fetchLocation();
+  }, []);
+
   return (
     <div className="flex flex-1 flex-col overflow-x-hidden">
       <div className="hero  min-h-screen max-w-full">
         <div className="hero-content flex-col lg:flex-row">
           <Image src={"/haas.png"} unoptimized width={500} height={500} alt="me" />
           <div>
-            <h1 className="text-4xl font-bold">Hello, I'm Chandrahaas <span className="wave">👋</span> </h1>
+            <div className="flex flex-row gap-4 mb-5 items-center">
+              <h1 className="text-3xl text-gray-300">Hello Buddy from </h1>
+              <Image src={`https://flagcdn.com/40x30/${country.toLowerCase()}.png`} width={40} height={30} alt="country" />
+            </div>
+            <h1 className="text-4xl font-bold">I'm Chandrahaas <span className="wave">👋</span> </h1>
             <h1 className="animate-typing overflow-hidden text-3xl  sm:text-6xl font-bold whitespace-nowrap text-green-500 pt-5 pb-5">Full Stack Engineer</h1>
             <div className="flex flex-row gap-10 text-2xl">
               Amateur philosopher. My life choices are a mystery even to me
             </div>
             <div className="flex w-full sm:hidden">
-          <div className="pt-5 pr-5"><Link href="https://github.com/chandrahaas02" target="_blank"><Github /></Link></div>
-          <div className="p-5"><Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/" target="_blank"><Linkedin /></Link></div>
-          <div className="p-5"><Link href="mailto:chandrahaas02@gmail.com" target="_blank"><Mail /></Link></div>
-        </div>
+              <div className="pt-5 pr-5"><Link href="https://github.com/chandrahaas02" target="_blank"><Github /></Link></div>
+              <div className="p-5"><Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/" target="_blank"><Linkedin /></Link></div>
+              <div className="p-5"><Link href="mailto:chandrahaas02@gmail.com" target="_blank"><Mail /></Link></div>
+            </div>
           </div>
         </div>
       </div>
@@ -45,30 +68,30 @@ export default function Home() {
           Skills
         </div>
         <div className="w-screen sm:w-3/4 flex overflow-x-hidden py-7">
-        <ul className="flex animate-infinite-scroll gap-10">
-          <li><SiReact color="default" size={100}/></li>
-          <li><SiPrometheus color="default" size={100}/></li>
-          <li><SiAmazonwebservices color="default" size={100}/></li>
-          <li><SiGrafana color="default" size={100}/></li>
-          <li><SiPostgresql color="default" size={100}/></li>
-          <li><SiNodedotjs color="default" size={100}/></li>
-          <li><SiKubernetes color="default" size={100}/></li>
-          <li><SiGooglecloud color="default" size={100}/></li>
-          <li><SiTensorflow color="default" size={100}/></li>
-          <li><SiPytorch color="default" size={100}/></li>
-          <li><SiPython color="default" size={100}/></li>
-          <li><SiReact color="default" size={100}/></li>
-          <li><SiPrometheus color="default" size={100}/></li>
-          <li><SiAmazonwebservices color="default" size={100}/></li>
-          <li><SiGrafana color="default" size={100}/></li>
-          <li><SiPostgresql color="default" size={100}/></li>
-          <li><SiNodedotjs color="default" size={100}/></li>
-          <li><SiKubernetes color="default" size={100}/></li>
-          <li><SiGooglecloud color="default" size={100}/></li>
-          <li><SiTensorflow color="default" size={100}/></li>
-          <li><SiPytorch color="default" size={100}/></li>
-          <li><SiPython color="default" size={100}/></li>
-        </ul>
+          <ul className="flex animate-infinite-scroll gap-10">
+            <li><SiReact color="default" size={100} /></li>
+            <li><SiPrometheus color="default" size={100} /></li>
+            <li><SiAmazonwebservices color="default" size={100} /></li>
+            <li><SiGrafana color="default" size={100} /></li>
+            <li><SiPostgresql color="default" size={100} /></li>
+            <li><SiNodedotjs color="default" size={100} /></li>
+            <li><SiKubernetes color="default" size={100} /></li>
+            <li><SiGooglecloud color="default" size={100} /></li>
+            <li><SiTensorflow color="default" size={100} /></li>
+            <li><SiPytorch color="default" size={100} /></li>
+            <li><SiPython color="default" size={100} /></li>
+            <li><SiReact color="default" size={100} /></li>
+            <li><SiPrometheus color="default" size={100} /></li>
+            <li><SiAmazonwebservices color="default" size={100} /></li>
+            <li><SiGrafana color="default" size={100} /></li>
+            <li><SiPostgresql color="default" size={100} /></li>
+            <li><SiNodedotjs color="default" size={100} /></li>
+            <li><SiKubernetes color="default" size={100} /></li>
+            <li><SiGooglecloud color="default" size={100} /></li>
+            <li><SiTensorflow color="default" size={100} /></li>
+            <li><SiPytorch color="default" size={100} /></li>
+            <li><SiPython color="default" size={100} /></li>
+          </ul>
         </div>
       </div>
       <div id="exp" className="flex flex-col justify-center items-center  min-h-screen">
