@@ -46,3 +46,14 @@ export const TickMark = () => {
     </div>)
 }
 
+
+export function Hovertext({children, text}) {
+    return (
+        <div className="flex items-center justify-center group m-10">
+        <div className="flex items-center justify-center group">
+            <div className="absolute m-0 group-hover:opacity-50">{children}</div>
+            <div className="transition-all transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">{text}</div>
+        </div>
+        </div>
+    )
+}

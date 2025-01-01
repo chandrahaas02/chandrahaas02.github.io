@@ -2,99 +2,99 @@
 <rss version="2.0">
     <channel>
         <title>Blog posts | RSS Feed</title>
-        <link>localhost:3000</link>
+        <link>https://chandrahaas02.github.io</link>
         <description>Welcome to this blog posts!</description>
-        <lastBuildDate>Thu, 10 Oct 2024 07:05:52 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 01 Jan 2025 01:02:55 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <item>
             <title><![CDATA[Exploring tools on new Blog]]></title>
-            <link>localhost:3000/blog/tools</link>
-            <guid>localhost:3000/blog/tools</guid>
+            <link>https://chandrahaas02.github.io/blog/tools</link>
+            <guid>https://chandrahaas02.github.io/blog/tools</guid>
             <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[A talk on video bandwidth]]></title>
-            <link>localhost:3000/blog/temporal</link>
-            <guid>localhost:3000/blog/temporal</guid>
+            <link>https://chandrahaas02.github.io/blog/temporal</link>
+            <guid>https://chandrahaas02.github.io/blog/temporal</guid>
             <pubDate>Tue, 09 Aug 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Exploring nocode or lowcode platforms]]></title>
-            <link>localhost:3000/blog/nocode</link>
-            <guid>localhost:3000/blog/nocode</guid>
+            <link>https://chandrahaas02.github.io/blog/nocode</link>
+            <guid>https://chandrahaas02.github.io/blog/nocode</guid>
             <pubDate>Mon, 08 Aug 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[New changes]]></title>
-            <link>localhost:3000/blog/newChanges</link>
-            <guid>localhost:3000/blog/newChanges</guid>
+            <link>https://chandrahaas02.github.io/blog/newChanges</link>
+            <guid>https://chandrahaas02.github.io/blog/newChanges</guid>
             <pubDate>Fri, 25 Feb 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Extensions I use in vscode]]></title>
-            <link>localhost:3000/blog/vscode</link>
-            <guid>localhost:3000/blog/vscode</guid>
+            <link>https://chandrahaas02.github.io/blog/vscode</link>
+            <guid>https://chandrahaas02.github.io/blog/vscode</guid>
             <pubDate>Fri, 21 Jan 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Obsidian]]></title>
-            <link>localhost:3000/blog/obsidian</link>
-            <guid>localhost:3000/blog/obsidian</guid>
+            <link>https://chandrahaas02.github.io/blog/obsidian</link>
+            <guid>https://chandrahaas02.github.io/blog/obsidian</guid>
             <pubDate>Sun, 02 Jan 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[An year end story]]></title>
-            <link>localhost:3000/blog/lastpost</link>
-            <guid>localhost:3000/blog/lastpost</guid>
+            <link>https://chandrahaas02.github.io/blog/lastpost</link>
+            <guid>https://chandrahaas02.github.io/blog/lastpost</guid>
             <pubDate>Fri, 31 Dec 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[AM I A 'SID']]></title>
-            <link>localhost:3000/blog/good</link>
-            <guid>localhost:3000/blog/good</guid>
+            <link>https://chandrahaas02.github.io/blog/good</link>
+            <guid>https://chandrahaas02.github.io/blog/good</guid>
             <pubDate>Mon, 27 Dec 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Moving to windows]]></title>
-            <link>localhost:3000/blog/god3</link>
-            <guid>localhost:3000/blog/god3</guid>
+            <link>https://chandrahaas02.github.io/blog/god3</link>
+            <guid>https://chandrahaas02.github.io/blog/god3</guid>
             <pubDate>Sun, 12 Dec 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Ditch windows for linux ?]]></title>
-            <link>localhost:3000/blog/god2</link>
-            <guid>localhost:3000/blog/god2</guid>
+            <link>https://chandrahaas02.github.io/blog/god2</link>
+            <guid>https://chandrahaas02.github.io/blog/god2</guid>
             <pubDate>Fri, 20 Aug 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[windows getting better]]></title>
-            <link>localhost:3000/blog/god1</link>
-            <guid>localhost:3000/blog/god1</guid>
+            <link>https://chandrahaas02.github.io/blog/god1</link>
+            <guid>https://chandrahaas02.github.io/blog/god1</guid>
             <pubDate>Mon, 21 Jun 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[let's create a tic-tac-bot]]></title>
-            <link>localhost:3000/blog/mini</link>
-            <guid>localhost:3000/blog/mini</guid>
+            <link>https://chandrahaas02.github.io/blog/mini</link>
+            <guid>https://chandrahaas02.github.io/blog/mini</guid>
             <pubDate>Wed, 09 Jun 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Why markdown and jekyll]]></title>
-            <link>localhost:3000/blog/hello</link>
-            <guid>localhost:3000/blog/hello</guid>
+            <link>https://chandrahaas02.github.io/blog/hello</link>
+            <guid>https://chandrahaas02.github.io/blog/hello</guid>
             <pubDate>Mon, 31 May 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[The smart move]]></title>
-            <link>localhost:3000/blog/smart</link>
-            <guid>localhost:3000/blog/smart</guid>
+            <link>https://chandrahaas02.github.io/blog/smart</link>
+            <guid>https://chandrahaas02.github.io/blog/smart</guid>
             <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Why markdown]]></title>
-            <link>localhost:3000/blog/hi</link>
-            <guid>localhost:3000/blog/hi</guid>
+            <link>https://chandrahaas02.github.io/blog/hi</link>
+            <guid>https://chandrahaas02.github.io/blog/hi</guid>
             <pubDate>Sat, 12 Dec 2020 00:00:00 GMT</pubDate>
         </item>
     </channel>

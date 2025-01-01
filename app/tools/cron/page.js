@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 
 export default function JsonConvertor() {
 
-    const [output,setOutput] = useState("");
+    const [output,setOutput] = useState("At every minute");
     const [error,setError] = useState(false)
 
 
@@ -109,8 +109,8 @@ export default function JsonConvertor() {
     return (
         <div className="flex flex-col w-screen items-center justify-center p-5 bg-neutral-950">
             {output && <span className={`text-5xl m-5 ${error? "text-error": "text-success"}`} >{output}</span>}
-            <textarea type="text" placeholder="Type here"
-            className="textarea textarea-bordered rounded-full text-5xl text-center box-border" onChange={handleInput}/>
+            <textarea type="text" placeholder="Type here" defaultValue="* * * * *"
+            className="textarea textarea-bordered rounded-full text-5xl h-20 text-center box-border align-top resize-none" onChange={handleInput}/>
         </div>
     )
 }
