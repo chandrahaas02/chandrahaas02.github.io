@@ -37,21 +37,25 @@ export default function SideBarBlog({ allPosts, prefix, index }) {
     }
 
     return (
-        <div className={`${pathname == "/" + prefix ? 'w-full' : 'hidden sm:block'} sm:w-96 sm:max-w-[30vw] flex-col border-r pr-5 border-neutral-900 text-primary overflow-y-auto max-h-screen space-y-5`}>
+        <div className={`${pathname == "/" + prefix ? 'w-full' : 'hidden sm:block'} sm:w-96 sm:max-w-[30vw] flex-col border-r pr-5 border-neutral-900 text-primary overflow-y-auto max-h-screen`}>
             {prefix === "blog" && (<div className='m-2 flex flex-row'>
                 <h1 className='flex-1 text-xl'>Blog</h1>
                 <div><Link href="/rss.xml"><Rss size={20} /></Link></div>
             </div>)}
-            <label className="input input-bordered flex items-center gap-3 m-2">
+            <label className="input input-bordered flex items-center gap-0 m-2">
                 < Search size={20} />
                 <input type="text" className="grow" placeholder="Search" onChange={handleChange} />
             </label>
             {filterdPosts.map((post, index) => (
-                <div key={index} className={`flex rounded-md ml-2  pl-2 pr-2 pt-2 ${pathname == `/${prefix}/${post.slug}`
-                    ? 'bg-neutral-700'
-                    : 'sm:hover:bg-neutral-800'}`}>
-                    <Link href={`/${prefix}/${post.slug}`}>
-                        <p className='m-1'>{post.title}</p>
+                <div
+                    key={index}
+                    className={`flex rounded-md ml-2 p-2 ${pathname == `/${prefix}/${post.slug}`
+                        ? 'bg-neutral-700'
+                        : 'sm:hover:bg-neutral-800'}`}
+                    style={{ justifyContent: 'center', alignItems: 'center' }}
+                >
+                    <Link href={`/${prefix}/${post.slug}`} className="w-full flex items-center" style={{ height: '100%' }}>
+                        <p className='m-1 w-full text-left flex items-center'>{post.title}</p>
                     </Link>
                 </div>
             ))}
