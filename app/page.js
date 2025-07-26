@@ -2,6 +2,7 @@
 "use client"
 import Image from "next/image";
 import { TickMark , Hovertext } from "@/components/Icon";
+import BackgroundGridTrail from "@/components/BackgroundGridTrail";
 import Link from 'next/link'
 import { useState, useEffect } from "react"
 import { Github, Linkedin, Mail } from "lucide-react"
@@ -42,7 +43,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-1 flex-col overflow-x-hidden">
-      <div className="hero  min-h-screen max-w-full">
+      <div className="relative hero  min-h-screen max-w-full">
+        <BackgroundGridTrail />
         <div className="hero-content flex-col lg:flex-row">
           <Image src={"/haas.png"} unoptimized width={500} height={500} alt="me" />
           <div>
