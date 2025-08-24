@@ -9,16 +9,23 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 
 export default function MarkdownEditor() {
+
+    const tabsData = [
+        { id: 'markdown', title: 'Markdown' },
+        { id: 'preview', title: 'Preview' },
+        { id: 'split', title: 'Split Screen' },
+    ];
+
     const [markdown, setMarkdown] = useState('## markdown preview');
-    const [preview, setPreview] = useState(false)
+    const [activeTab, setActiveTab] = useState(tabsData[0].id);
 
-    useEffect(()=>{
-        setMarkdown(markdown=> localStorage.getItem("markdown"))
-    },[])
+    useEffect(() => {
+        setMarkdown(markdown => localStorage.getItem("markdown"))
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         return () => {
-            window.localStorage.setItem("markdown",markdown)
+            window.localStorage.setItem("markdown", markdown)
         }
     })
 
@@ -26,16 +33,59 @@ export default function MarkdownEditor() {
         setMarkdown(e.target.value);
     };
 
-    const togglePreview = () => {
-        setPreview(!preview)
-    }
+    const getTextWidth = (activeTab) => {
+        switch (activeTab) {
+            case "markdown":
+                return 'w-full';
+            case "preview":
+                return 'hidden';
+            case "split":
+                return 'w-1/2';
+            default:
+                return 'w-auto'; // A fallback class
+        }
+    };
+    const getPreviewWidth = (activeTab) => {
+        switch (activeTab) {
+            case "markdown":
+                return 'hidden';
+            case "preview":
+                return 'w-full';
+            case "split":
+                return 'w-1/2';
+            default:
+                return 'w-auto'; // A fallback class
+        }
+    };
+
+    const currentTextWidthClass = getTextWidth(activeTab);
+    const currentPreviewWidthClass = getPreviewWidth(activeTab);
 
     return (
-        <div className="flex flex-col w-screen items-center p-5 bg-neutral-950">
-            <button className="btn btn-secondary mb-5 rounded-full sm:hidden" onClick={togglePreview}>{preview ? "Show Markdown" : "Show Preview"}</button>
+        <div className="flex flex-col w-screen items-center bg-neutral-950">
+            <div className="w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden">
+                <div className="flex p-2 rounded-t-xl space-x-2">
+                    {tabsData.map(tab => (
+                        <button
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id)}
+                            className={`
+                flex-1 py-3 px-4 text-sm font-semibold rounded-lg transition-all duration-300 ease-in-out
+                ${activeTab === tab.id
+                                    ? 'bg-neutral-700 shadow-md transform scale-105'
+                                    : ' hover:bg-neutral-800'
+                                }
+                ${tab.id === 'split' ? 'hidden sm:block' : ''}
+              `}
+                        >
+                            {tab.title}
+                        </button>
+                    ))}
+                </div>
+            </div>
             <div className="flex flex-row w-full h-full">
-                <textarea className={"textarea textarea-bordered w-full sm:w-1/2 h-full sm:m-5 text-xl min-w-[30vw] "+ (preview ? "max-sm:hidden" : "max-sm:flex")} onChange={handleChange} value={markdown} />
-                <div className={markdownStyles["markdown"] + " w-full sm:max-w-[40vw] "+  (preview ? "max-sm:flex max-sm:flex-col" : "max-sm:hidden")}>
+                <textarea className={`textarea bg-inherit sm:m-5 h-full text-lg ${currentTextWidthClass}`} onChange={handleChange} value={markdown} />
+                <div className={markdownStyles["markdown"] + " sm:m-5 h-full overflow-auto p-5 text-xl " + currentPreviewWidthClass}>
                     <Markdown
                         children={markdown}
                         remarkPlugins={[remarkGfm]}
