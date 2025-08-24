@@ -69,7 +69,7 @@ export default function Home() {
         <div className="text-3xl m-5">
           Skills
         </div>
-        <div className="w-screen sm:w-3/4 flex overflow-x-hidden py-7 h-[200px]">
+        <div className="w-screen flex overflow-x-hidden py-7">
           <ul className="flex animate-infinite-scroll gap-10">
             <li><Hovertext text="React"><SiReact color="default" size={100}/></Hovertext></li>
            <li><Hovertext text="Prometheus"><SiPrometheus color="default" size={100} /></Hovertext></li>

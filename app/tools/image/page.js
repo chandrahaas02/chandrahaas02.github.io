@@ -20,7 +20,8 @@ export default function JsonConvertor() {
     const handleDownload = () => {
         const a = document.createElement('a');
         a.href = selectedImagePreview;
-        a.download = 'modified_image.'+ format; // Replace 'downloaded_image.png' with your desired file name
+        const filename = selectedFile.name.split('.').slice(0, -1).join('.');
+        a.download = filename+ "_ch_mod."+ format; // Replace 'downloaded_image.png' with your desired file name
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
