@@ -1,6 +1,22 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "mytheme";
+  default: true;
+  prefersdark: true; /* set as default dark mode (prefers-color-scheme:dark) */
+  color-scheme: dark; /* color of browser-provided UI */
+  --color-primary: "#f5f5f5";
+  --color-primary-content: "#222222";
+  --color-secondary: "#f2f2f2";
+  --color-accent: "#225522";
+  --color-neutral: "#000000";
+  --color-base-100: "#222222";
+  --color-info: "#00d4ff";
+  --color-success: "#508c00";
+  --color-warning: "#fb6b00";
+  --color-error: "#ff7d7d";
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -16,12 +32,6 @@ body {
   overscroll-behavior: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 .wave {
   animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
   animation-duration: .75s;        /* Change to speed up or slow down */
@@ -34,4 +44,17 @@ body {
   0% { transform: rotate( 0.0deg) }
  50% { transform: rotate(14.0deg) }
  100% { transform: rotate( 0.0deg) }
+}
+
+.infinite-scroll {
+  animation-name: infinte-scroll;  /* Refers to the name of your @keyframes element below */
+  animation-duration: 20s;
+  animation-timing-function: linear;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+
+}
+
+@keyframes infinte-scroll {
+  0% {transform: translateX(0)}
+  100% {transform: translateX(calc(-50% - 20px))}
 }
