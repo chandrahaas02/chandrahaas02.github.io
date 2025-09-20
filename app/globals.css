@@ -58,3 +58,18 @@ body {
   0% {transform: translateX(0)}
   100% {transform: translateX(calc(-50% - 20px))}
 }
+
+@layer base {
+  #disqus_thread {
+    /* Reset Tailwind's custom properties so Disqus doesn't read OKLCH */
+    --tw-text-opacity: 1 !important;
+    --tw-bg-opacity: 1 !important;
+    color: #555555 !important;
+    background-color: #0a0a0a !important;
+  }
+
+  .dark #disqus_thread {
+    color: #0a0a0a !important;
+    background-color: #020617 !important;
+  }
+}

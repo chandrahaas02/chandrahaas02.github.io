@@ -11,7 +11,7 @@ export default function DisqusComments({ url, identifier, title }) {
   };
 
   return (
-    <div className="mt-10">
+    <div id="disqus_thread" className="mt-10 bg-slate-950 text-slate-100 p-4 rounded-lg shadow">
       <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </div>
   );
