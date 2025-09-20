@@ -5,10 +5,12 @@ import remarkGfm from 'remark-gfm'
 import markdownStyles from "@/utils/markdown-styles.module.css";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import DisqusComments from "@/components/comments";
 
 
 export default async function Post({ params }) {
   const post = getPostBySlug(params.slug);
+  const url = `https://chandrahaas02.github.io/blog/${post.slug}`;
 
   if (!post) {
     return notFound();
@@ -47,6 +49,10 @@ export default async function Post({ params }) {
               }
             }}
           />
+        </div>
+        <div>
+          <h2 className="mt-10 mb-4 text-xl font-semibold">Comments</h2>
+          <DisqusComments url={url} identifier={post.slug} title={post.title} />
         </div>
       </div>
     </main>

@@ -37,14 +37,14 @@ export default function SideBarBlog({ allPosts, prefix, index }) {
     }
 
     return (
-        <div className={`${pathname == "/" + prefix ? 'w-full' : 'hidden sm:block'} sm:w-96 sm:max-w-[30vw] flex-col border-r pr-5 border-neutral-900 text-primary overflow-y-auto max-h-screen`}>
-            {prefix === "blog" && (<div className='m-2 flex flex-row'>
-                <h1 className='flex-1 text-xl'>Blog</h1>
+        <div className={`${pathname == "/" + prefix ? 'w-full' : 'hidden sm:block'} sm:w-96 sm:max-w-[30vw] flex-col  relative border-r pr-5 border-neutral-900 text-primary overflow-y-auto max-h-screen`}>
+            {prefix === "blog" && (<div className='mt-2 flex flex-row'>
+                <h1 className='flex-1 text-xl ml-2'>Blog</h1>
                 <div><Link href="/rss.xml"><Rss size={20} /></Link></div>
             </div>)}
-            <label className="input input-bordered flex items-center gap-0 m-2">
+            <label className="input input-bordered flex items-center gap-0 m-2 w-full">
                 < Search size={20} />
-                <input type="text" className="grow" placeholder="Search" onChange={handleChange} />
+                <input type="text" className="grow m-2" placeholder="Search" onChange={handleChange} />
             </label>
             {filterdPosts.map((post, index) => (
                 <div
