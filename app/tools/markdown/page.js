@@ -84,7 +84,7 @@ export default function MarkdownEditor() {
                 </div>
             </div>
             <div className="flex flex-row w-full h-full">
-                <textarea className={`textarea bg-inherit sm:m-5 h-full text-lg ${currentTextWidthClass}`} onChange={handleChange} value={markdown} />
+                <textarea className={`textarea bg-neutral-950 sm:m-5 h-full text-lg ${currentTextWidthClass}`} onChange={handleChange} value={markdown} />
                 <div className={markdownStyles["markdown"] + " sm:m-5 h-full overflow-auto p-5 text-xl " + currentPreviewWidthClass}>
                     <Markdown
                         children={markdown}
