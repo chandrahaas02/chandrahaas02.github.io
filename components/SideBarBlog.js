@@ -55,7 +55,7 @@ export default function SideBarBlog({ allPosts, prefix, index }) {
                     style={{ justifyContent: 'center', alignItems: 'center' }}
                 >
                     <Link href={`/${prefix}/${post.slug}`} className="w-full flex items-center" style={{ height: '100%' }}>
-                        <p className='m-1 w-full text-left flex items-center'>{post.title}</p>
+                        <p className='m-1 w-full text-left text-[16px] flex items-center'>{post.title}</p>
                     </Link>
                 </div>
             ))}
