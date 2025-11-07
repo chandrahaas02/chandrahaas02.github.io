@@ -119,7 +119,7 @@ export default function MarkdownEditor() {
         <div className="flex flex-col w-screen items-center bg-neutral-950">
             <div className="w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden">
                 <div className="flex p-2 rounded-t-xl space-x-2">
-                    < input type="text" placeholder="Title" className="input input-ghost flex-1 text-lg"
+                    < input type="text" placeholder="Title" className="input bg-neutral-950 flex-1 text-lg focus:outline-none focus:ring-0"
                         value={note.title} onChange={(e) => setNote({ ...note, title: e.target.value })} />
                     <div className="flex btn-group">
                         <button className={`btn btn-ghost ${viewMode === "markdown" ? "btn-active" : ""}`} onClick={() => setViewMode("markdown")}><Pen /></button>
@@ -130,34 +130,8 @@ export default function MarkdownEditor() {
                 </div>
             </div>
             <div className="flex flex-row w-full h-full">
-                <textarea className={`textarea bg-neutral-950 sm:m-5 h-full text-lg ${currentTextWidthClass}`} onChange={handleChange} value={note.content} />
-                <div className={markdownStyles["markdown"] + " sm:m-5 h-full overflow-auto p-5 text-xl " + currentPreviewWidthClass}>
-                    <Markdown
-                        children={note.content || "No content yet!"}
-                        remarkPlugins={[remarkGfm]}
-                        components={{
-                            code(props) {
-                                const { children, className, node, ...rest } = props
-                                const match = /language-(\w+)/.exec(className || '')
-                                return match ? (
-                                    <SyntaxHighlighter
-                                        {...rest}
-                                        PreTag="div"
-                                        children={String(children).replace(/\n$/, '')}
-                                        language={match[1]}
-                                        style={atomDark}
-                                    />
-                                ) : (
-                                    <code {...rest} className={className}>
-                                        {children}
-                                    </code>
-                                )
-                            }
-                        }}
-                    />
-                </div>
                 {showDrawer && (
-                    <div className="right-0 h-full w-80 bg-neutral-950 p-4 z-50 overflow-y-auto">
+                    <div className="h-full w-80 bg-neutral-950 p-4 z-50 overflow-y-auto">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="text-lg font-semibold">Saved Notes</h3>
                         </div>
@@ -192,6 +166,32 @@ export default function MarkdownEditor() {
                         )}
                     </div>
                 )}
+                <textarea className={`textarea bg-neutral-950 sm:m-5 border-none focus:outline-none focus:ring-0  h-full text-lg ${currentTextWidthClass}`} onChange={handleChange} value={note.content} />
+                <div className={markdownStyles["markdown"] + " sm:m-5 h-full overflow-auto p-5 text-xl " + currentPreviewWidthClass}>
+                    <Markdown
+                        children={note.content || "No content yet!"}
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                            code(props) {
+                                const { children, className, node, ...rest } = props
+                                const match = /language-(\w+)/.exec(className || '')
+                                return match ? (
+                                    <SyntaxHighlighter
+                                        {...rest}
+                                        PreTag="div"
+                                        children={String(children).replace(/\n$/, '')}
+                                        language={match[1]}
+                                        style={atomDark}
+                                    />
+                                ) : (
+                                    <code {...rest} className={className}>
+                                        {children}
+                                    </code>
+                                )
+                            }
+                        }}
+                    />
+                </div>
             </div>
         </div>
     );
