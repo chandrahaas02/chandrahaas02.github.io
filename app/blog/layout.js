@@ -1,16 +1,17 @@
-import { getAllPosts , generateRSSFeed, createIndex } from "@/utils/posts"
+import { getAllPosts, generateRSSFeed, createIndex } from "@/utils/posts"
 import SideBarBlog from "@/components/SideBarBlog.js"
+
 const allPosts = getAllPosts();
-generateRSSFeed()
+generateRSSFeed();
 const index = createIndex();
 
 export default function BlogLayout({ children }) {
     return (
-        <div className="flex w-full">
-            <SideBarBlog allPosts={allPosts} prefix={"blog"} index={JSON.stringify(index)}/>
-            <div className="flex flex-1 overflow-y-auto justify-center max-h-screen space-y-5" >
+        <div className="flex w-full min-h-screen bg-black">
+            <SideBarBlog allPosts={allPosts} prefix={"blog"} index={JSON.stringify(index)} />
+            <div className="flex-1 h-screen overflow-y-auto">
                 {children}
             </div>
         </div>
-        )
+    )
 }

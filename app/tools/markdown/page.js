@@ -116,60 +116,95 @@ export default function MarkdownEditor() {
     const currentPreviewWidthClass = getPreviewWidth(viewMode);
 
     return (
-        <div className="flex flex-col w-screen items-center bg-neutral-950">
-            <div className="w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden">
-                <div className="flex p-2 rounded-t-xl space-x-2">
-                    < input type="text" placeholder="Title" className="input bg-neutral-950 flex-1 text-lg focus:outline-none focus:ring-0"
-                        value={note.title} onChange={(e) => setNote({ ...note, title: e.target.value })} />
-                    <div className="flex btn-group">
-                        <button className={`btn btn-ghost ${viewMode === "markdown" ? "btn-active" : ""}`} onClick={() => setViewMode("markdown")}><Pen /></button>
-                        <button className={`btn btn-ghost ${viewMode === "preview" ? "btn-active" : ""}`} onClick={() => setViewMode("preview")}><Eye /></button>
-                        <button className={`btn btn-ghost ${viewMode === "split" ? "btn-active" : ""}`} onClick={() => setViewMode("split")}><SeparatorVertical /></button>
-                    </div>
-                    <button onClick={handleclick}>{showDrawer ? <FolderOpen /> : <FolderClosed />}</button>
+        <div className="flex flex-col w-full h-[calc(100vh-150px)] gap-4">
+            <div className="w-full bg-white/5 border border-white/10 rounded-xl p-2 flex items-center gap-2">
+                <input
+                    type="text"
+                    placeholder="Untitled Note"
+                    className="input bg-transparent flex-1 text-lg font-bold text-white focus:outline-none placeholder-zinc-600"
+                    value={note.title}
+                    onChange={(e) => setNote({ ...note, title: e.target.value })}
+                />
+                <div className="flex bg-black/20 rounded-lg p-1">
+                    <button
+                        className={`p-2 rounded-md transition-colors ${viewMode === "markdown" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
+                        onClick={() => setViewMode("markdown")}
+                        title="Editor Only"
+                    >
+                        <Pen size={18} />
+                    </button>
+                    <button
+                        className={`p-2 rounded-md transition-colors ${viewMode === "split" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
+                        onClick={() => setViewMode("split")}
+                        title="Split View"
+                    >
+                        <SeparatorVertical size={18} />
+                    </button>
+                    <button
+                        className={`p-2 rounded-md transition-colors ${viewMode === "preview" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
+                        onClick={() => setViewMode("preview")}
+                        title="Preview Only"
+                    >
+                        <Eye size={18} />
+                    </button>
                 </div>
+                <button
+                    onClick={handleclick}
+                    className="p-2 text-zinc-400 hover:text-white transition-colors"
+                    title={showDrawer ? "Hide Notes" : "Show Notes"}
+                >
+                    {showDrawer ? <FolderOpen size={20} /> : <FolderClosed size={20} />}
+                </button>
             </div>
-            <div className="flex flex-row w-full h-full">
+
+            <div className="flex flex-row w-full flex-1 overflow-hidden gap-4 relative">
                 {showDrawer && (
-                    <div className="h-full w-80 bg-neutral-950 p-4 z-50 overflow-y-auto">
-                        <div className="flex justify-between items-center mb-3">
-                            <h3 className="text-lg font-semibold">Saved Notes</h3>
+                    <div className="absolute inset-y-0 left-0 w-64 bg-neutral-900 border border-white/10 rounded-xl p-4 z-20 overflow-y-auto shadow-2xl">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Saved Notes</h3>
                         </div>
                         <ul className="flex flex-col gap-2">
-                            <li className="p-2 rounded-lg hover:bg-base-300 cursor-pointer flex justify-center items-center bg-neutral-800" onClick={newNote}>
-                                <p className="font-medium">New Note</p>
+                            <li className="p-3 rounded-lg hover:bg-white/5 cursor-pointer flex items-center justify-center border border-dashed border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-all" onClick={newNote}>
+                                <span className="font-medium text-sm">+ New Note</span>
                             </li>
                             {notes.map((n) => (
                                 <li
                                     key={n.id}
-                                    className={`p-2 rounded-lg ${note.id === n.id ? 'bg-slate-100' : ''}hover:bg-base-300 cursor-pointer flex justify-between items-center`}
+                                    className={`p-3 rounded-lg cursor-pointer flex justify-between items-center group transition-colors ${note.id === n.id ? 'bg-white/10 text-white' : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200'}`}
                                     onClick={() => loadNote(n.id)}
                                 >
-                                    <div>
-                                        <p className="font-medium">{n.title}</p>
-                                        <p className="text-xs opacity-60">{n.updatedAt}</p>
+                                    <div className="overflow-hidden">
+                                        <p className="font-medium truncate text-sm">{n.title || "Untitled"}</p>
+                                        <p className="text-xs opacity-50">{n.updatedAt}</p>
                                     </div>
                                     <button
-                                        className="btn btn-xs btn-ghost text-error"
+                                        className="opacity-0 group-hover:opacity-100 p-1 hover:text-red-400 transition-opacity"
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             deleteNote(n.id);
                                         }}
                                     >
-                                        <Trash />
+                                        <Trash size={14} />
                                     </button>
                                 </li>
                             ))}
                         </ul>
                         {notes.length === 0 && (
-                            <p className="mt-4 text-sm">No saved notes yet.</p>
+                            <p className="mt-4 text-center text-xs text-zinc-600">No saved notes yet.</p>
                         )}
                     </div>
                 )}
-                <textarea className={`textarea bg-neutral-950 sm:m-5 border-none focus:outline-none focus:ring-0  h-full text-lg ${currentTextWidthClass}`} onChange={handleChange} value={note.content} />
-                <div className={markdownStyles["markdown"] + " sm:m-5 h-full overflow-auto p-5 text-xl " + currentPreviewWidthClass}>
+
+                <textarea
+                    className={`textarea bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-500 h-full text-lg font-mono text-zinc-200 resize-none p-6 ${currentTextWidthClass}`}
+                    onChange={handleChange}
+                    value={note.content}
+                    placeholder="Start writing..."
+                />
+
+                <div className={`bg-white/5 border border-white/10 rounded-xl h-full overflow-auto p-6 ${markdownStyles["markdown"]} ${currentPreviewWidthClass}`}>
                     <Markdown
-                        children={note.content || "No content yet!"}
+                        children={note.content || "*No content yet!*"}
                         remarkPlugins={[remarkGfm]}
                         components={{
                             code(props) {
@@ -182,6 +217,7 @@ export default function MarkdownEditor() {
                                         children={String(children).replace(/\n$/, '')}
                                         language={match[1]}
                                         style={atomDark}
+                                        customStyle={{ background: 'transparent', padding: 0 }}
                                     />
                                 ) : (
                                     <code {...rest} className={className}>

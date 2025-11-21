@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Play, Download} from 'lucide-react';
+import { Play, Download } from 'lucide-react';
 
 const ScreenCameraRecorder = () => {
   const [isSetup, setIsSetup] = useState(false);
@@ -395,61 +395,60 @@ const ScreenCameraRecorder = () => {
   }
 
   return (
-    <div className="flex flex-col w-screen items-center bg-neutral-950">
+    <div className="flex flex-col w-full max-w-4xl mx-auto items-center gap-8">
       {/* Recording Indicator */}
       {isRecording && (
-        <div className="fixed top-5 right-5 border-2 border-red-950 text-white px-5 py-2 rounded-full font-bold flex items-center gap-3 z-50">
-          <div className="w-3 h-3 bg-red-700 rounded-full animate-ping"></div>
-          <span>Recording in progress...</span>
+        <div className="fixed top-5 right-5 border border-red-500/50 bg-red-900/20 text-red-200 px-5 py-2 rounded-full font-bold flex items-center gap-3 z-50 backdrop-blur-md">
+          <div className="w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+          <span>Recording...</span>
         </div>
       )}
 
       {/* Video Modal */}
       {playingVideo && (
-        <dialog id="my_modal" className="modal bg-black" onClose={handleModalClose}>
-          <div className="max-w-4xl">
+        <dialog id="my_modal" className="modal bg-black/80 backdrop-blur-sm" onClose={handleModalClose}>
+          <div className="max-w-4xl w-full p-4">
             <video
               src={playingVideo.url}
               controls
               autoPlay
-              className="rounded-lg shadow-2xl"
+              className="w-full rounded-xl shadow-2xl border border-white/10"
             />
           </div>
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 text-white">✕</button>
+          </form>
         </dialog>
       )}
 
-      <div className="container mx-auto px-5 py-5 max-w-4xl">
+      <div className="w-full">
         {/* Header */}
-        <div className="text-center mb-5">
-          <h1 className="text-3xl font-bold mb-2 drop-shadow-lg">
-            Screen Recorder with Camera
+        <div className="text-center mb-8 space-y-2">
+          <h1 className="text-3xl font-bold text-white">
+            Screen Recorder
           </h1>
-          <p className="text-xl text-neutral-400">
-            Capture your screen with camera overlay for recordings
+          <p className="text-lg text-zinc-400">
+            Capture your screen with camera overlay
           </p>
         </div>
 
         {/* Main Recorder Container */}
-        <div className="rounded-3xl p-8">
+        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
           {/* Preview Section */}
-          <div className={`relative mb-8 ${isSetup? 'flex':'hidden'} rounded-2xl overflow-hidden bg-black min-h-[400px]`}>
+          <div className={`relative mb-8 ${isSetup ? 'flex' : 'hidden'} rounded-2xl overflow-hidden bg-black aspect-video border border-white/10`}>
             <video
               ref={screenPreviewRef}
               autoPlay
               muted
               playsInline
-              className="w-full h-[400px] object-contain bg-black rounded-2xl"
+              className="w-full h-full object-contain"
             />
             <video
               ref={cameraPreviewRef}
               autoPlay
               muted
               playsInline
-              className="absolute bottom-5 right-5 w-48 h-36 border-2 border-opacity-80 rounded-2xl object-cover bg-neutral-950 shadow-xl transition-transform hover:scale-105 hover:border-blue-400"
+              className="absolute bottom-5 right-5 w-48 h-36 border-2 border-white/20 rounded-xl object-cover bg-zinc-900 shadow-xl"
             />
           </div>
 
@@ -458,11 +457,10 @@ const ScreenCameraRecorder = () => {
             <button
               onClick={setupStreams}
               disabled={isSetup}
-              className={`px-6 py-3 rounded-full font-semibold text-lg uppercase tracking-wider min-w-[160px] transition-all duration-300 ${
-                isSetup
-                  ? 'bg-green-700 cursor-not-allowed opacity-70'
-                  : 'bg-yellow-700'
-              }`}
+              className={`px-6 py-3 rounded-xl font-semibold text-sm uppercase tracking-wider min-w-[160px] transition-all duration-300 ${isSetup
+                  ? 'bg-green-500/20 text-green-400 border border-green-500/30 cursor-not-allowed'
+                  : 'bg-white/10 text-white hover:bg-white/20 border border-white/10'
+                }`}
             >
               {isSetup ? 'Streams Ready' : 'Setup Streams'}
             </button>
@@ -470,7 +468,7 @@ const ScreenCameraRecorder = () => {
             <button
               onClick={startRecording}
               disabled={!isSetup || isRecording}
-              className="px-6 py-3 rounded-full font-semibold text-lg uppercase tracking-wider min-w-[160px] transition-all duration-300 bg-green-800 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 rounded-xl font-semibold text-sm uppercase tracking-wider min-w-[160px] transition-all duration-300 bg-green-600 hover:bg-green-500 text-white disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-zinc-700"
             >
               Start Recording
             </button>
@@ -478,48 +476,50 @@ const ScreenCameraRecorder = () => {
             <button
               onClick={stopRecording}
               disabled={!isRecording}
-              className="px-6 py-3 rounded-full font-semibold text-lg uppercase tracking-wider min-w-[160px] transition-all duration-300 bg-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 rounded-xl font-semibold text-sm uppercase tracking-wider min-w-[160px] transition-all duration-300 bg-red-600 hover:bg-red-500 text-white disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-zinc-700"
             >
               Stop Recording
             </button>
           </div>
 
           {/* Status */}
-          <div className="text-center text-xl opacity-90 mb-8">
+          <div className="text-center text-lg text-zinc-400 mb-8 font-mono">
             {status}
           </div>
 
           {/* Recordings Section */}
-          <div className=" bg-opacity-5 rounded-2xl p-6">
-            <h3 className="text-2xl font-bold text-center mb-6">Recorded Videos</h3>
+          <div className="bg-black/20 rounded-2xl p-6 border border-white/5">
+            <h3 className="text-xl font-bold text-center mb-6 text-white">Recorded Videos</h3>
 
             {recordings.length === 0 ? (
-              <p className="text-center opacity-70">No recordings yet</p>
+              <p className="text-center text-zinc-500">No recordings yet</p>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {recordings.map((recording, index) => (
                   <div
                     key={recording.id}
-                    className=" bg-opacity-10 rounded-xl p-4 flex justify-between items-center"
+                    className="bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 flex justify-between items-center border border-white/5"
                   >
                     <div className="flex-grow">
-                      <div className="font-bold">Recording {index + 1}</div>
-                      <div className="text-sm opacity-80">
+                      <div className="font-bold text-white">Recording {index + 1}</div>
+                      <div className="text-sm text-zinc-500">
                         {recording.timestamp} • {recording.size}
                       </div>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-2">
                       <button
                         onClick={() => playRecording(recording)}
-                        className="px-4 py-2 rounded-lg font-semibold text-sm"
+                        className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                        title="Play"
                       >
-                        <Play className="inline-block mr-2 mb-1" />
+                        <Play size={18} />
                       </button>
                       <button
                         onClick={() => downloadRecording(recording)}
-                        className="px-4 py-2 rounded-lg font-semibold text-sm"
+                        className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                        title="Download"
                       >
-                        <Download className="inline-block mr-2 mb-1" />
+                        <Download size={18} />
                       </button>
                     </div>
                   </div>

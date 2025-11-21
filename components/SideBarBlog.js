@@ -7,7 +7,7 @@ import { Index } from 'lunr'
 
 export default function SideBarBlog({ allPosts, prefix, index }) {
 
-    const [filterdPosts,setFilteredPosts] = useState(allPosts)
+    const [filterdPosts, setFilteredPosts] = useState(allPosts)
     const pathname = usePathname();
     const queryIndex = Index.load(JSON.parse(index))
 
@@ -24,10 +24,10 @@ export default function SideBarBlog({ allPosts, prefix, index }) {
             const ref = item.ref;
             const post = slugMap.get(ref);
             if (post) {
-              matchingSlugs.push(post);
+                matchingSlugs.push(post);
             }
         });
-        setFilteredPosts(filterdPosts=>matchingSlugs)
+        setFilteredPosts(filterdPosts => matchingSlugs)
     }
 
     const handleChange = (e) => {
@@ -37,28 +37,44 @@ export default function SideBarBlog({ allPosts, prefix, index }) {
     }
 
     return (
-        <div className={`${pathname == "/" + prefix ? 'w-full' : 'hidden sm:block'} sm:w-96 sm:max-w-[30vw] flex-col  relative border-r pr-5 border-neutral-900 text-primary overflow-y-auto max-h-screen`}>
-            {prefix === "blog" && (<div className='mt-2 flex flex-row'>
-                <h1 className='flex-1 text-xl ml-2'>Blog</h1>
-                <div><Link href="/rss.xml"><Rss size={20} /></Link></div>
-            </div>)}
-            <label className="input input-bordered flex items-center gap-0 m-2 w-full">
-                < Search size={20} />
-                <input type="text" className="grow m-2" placeholder="Search" onChange={handleChange} />
-            </label>
-            {filterdPosts.map((post, index) => (
-                <div
-                    key={index}
-                    className={`flex rounded-md ml-2 p-2 ${pathname == `/${prefix}/${post.slug}`
-                        ? 'bg-neutral-700'
-                        : 'sm:hover:bg-neutral-800'}`}
-                    style={{ justifyContent: 'center', alignItems: 'center' }}
-                >
-                    <Link href={`/${prefix}/${post.slug}`} className="w-full flex items-center" style={{ height: '100%' }}>
-                        <p className='m-1 w-full text-left text-[16px] flex items-center'>{post.title}</p>
-                    </Link>
+        <div className={`${pathname == "/" + prefix ? 'w-full' : 'hidden sm:flex'} sm:w-80 flex-col relative border-r border-white/10 bg-black h-screen overflow-y-auto`}>
+            <div className="sticky top-0 z-10 bg-black/80 backdrop-blur-md p-4 border-b border-white/10">
+                {prefix === "blog" && (
+                    <div className='flex items-center justify-between mb-4'>
+                        <h1 className='text-sm font-mono text-zinc-500 tracking-widest uppercase'>Blog</h1>
+                        <Link href="/rss.xml" className="text-zinc-500 hover:text-white transition-colors">
+                            <Rss size={16} />
+                        </Link>
+                    </div>
+                )}
+                <div className="relative group">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Search size={14} className="text-zinc-500 group-focus-within:text-zinc-300 transition-colors" />
+                    </div>
+                    <input
+                        type="text"
+                        className="block w-full pl-9 pr-3 py-1.5 border border-white/10 rounded-lg leading-5 bg-white/5 text-zinc-300 placeholder-zinc-600 focus:outline-none focus:bg-white/10 focus:border-zinc-500 text-sm transition-all"
+                        placeholder="Search posts..."
+                        onChange={handleChange}
+                    />
                 </div>
-            ))}
+            </div>
+
+            <div className="p-2 space-y-1">
+                {filterdPosts.map((post, index) => (
+                    <Link
+                        key={index}
+                        href={`/${prefix}/${post.slug}`}
+                        className={`group flex flex-col p-3 rounded-lg transition-all duration-200 ${pathname == `/${prefix}/${post.slug}`
+                                ? 'bg-white/10 text-white'
+                                : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200'
+                            }`}
+                    >
+                        <span className="text-sm font-medium leading-snug mb-1">{post.title}</span>
+                        <span className="text-[10px] font-mono text-zinc-600 group-hover:text-zinc-500 transition-colors">{post.date}</span>
+                    </Link>
+                ))}
+            </div>
         </div>
     )
 }

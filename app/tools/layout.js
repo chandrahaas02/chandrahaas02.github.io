@@ -1,7 +1,5 @@
 'use client'
-import { useState } from "react"
 import SideBarTools from "@/components/SideBarTools"
-import {Expand,Shrink} from "lucide-react"
 
 const allTools = [
   {
@@ -33,27 +31,20 @@ const allTools = [
     path: "/recorder"
   },
   {
-    title:"Image Converter",
-    path:"/image"
+    title: "Image Converter",
+    path: "/image"
   }
 ]
 
 export default function ToolsLayout({ children }) {
-
-  const [fullscreen, setFullscreen] = useState(false)
-
-  const handleScreen = () => {
-    setFullscreen(fullscreen=>!fullscreen)
-  }
-
   return (
-    <div className="z-0 relative flex w-full">
-      <SideBarTools allTools={allTools} prefix={"tools"} hidden={fullscreen} />
-      <button className="btn absolute hidden sm:block z-[1000] right-0 rounded-sm opacity-50" onClick={handleScreen}>{fullscreen?<Shrink/>:<Expand/>}</button>
-      <div className={`w-full h-full flex flex-1 overflow-y-auto space-y-5 align-top`} >
-        {children}
+    <div className="flex w-full min-h-screen bg-black">
+      <SideBarTools allTools={allTools} prefix={"tools"} />
+      <div className="flex-1 h-screen overflow-y-auto">
+        <div className="max-w-5xl mx-auto px-6 sm:px-12 py-12 sm:py-24">
+          {children}
+        </div>
       </div>
     </div>
   )
-
 }

@@ -41,7 +41,7 @@ const BackgroundGridTrail = ({ rows = 20, cols = 36, trailLength = 5 }) => {
   return (
     <div
       ref={gridRef}
-      className="absolute inset-0 grid grid-cols-30 grid-rows-30 pointer-events-none"
+      className="absolute inset-0 pointer-events-none z-0"
       style={{
         display: "grid",
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
@@ -51,9 +51,8 @@ const BackgroundGridTrail = ({ rows = 20, cols = 36, trailLength = 5 }) => {
       {cells.map((i) => (
         <div
           key={i}
-          className={`transition duration-300 border border-[#0a0a0a] ${
-            trail.includes(i) ? "bg-green-950" : ""
-          }`}
+          className={`transition duration-300 border border-white/10 ${trail.includes(i) ? "bg-white/10" : ""
+            }`}
         />
       ))}
     </div>

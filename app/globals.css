@@ -5,73 +5,44 @@
 @plugin "daisyui/theme" {
   name: "mytheme";
   default: true;
-  prefersdark: true; /* set as default dark mode (prefers-color-scheme:dark) */
-  color-scheme: dark; /* color of browser-provided UI */
-  --color-primary: "#f5f5f5";
-  --color-primary-content: "#222222";
-  --color-secondary: "#f2f2f2";
-  --color-accent: "#225522";
-  --color-neutral: "#000000";
-  --color-base-100: "#222222";
-  --color-info: "#00d4ff";
-  --color-success: "#508c00";
-  --color-warning: "#fb6b00";
-  --color-error: "#ff7d7d";
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: "#09090b"; /* Zinc 950 */
+  --color-base-200: "#18181b"; /* Zinc 900 */
+  --color-base-300: "#27272a"; /* Zinc 800 */
+  --color-base-content: "#fafafa"; /* Zinc 50 */
+  
+  --color-primary: "#fafafa"; /* Zinc 50 */
+  --color-primary-content: "#09090b"; /* Zinc 950 */
+  
+  --color-secondary: "#a1a1aa"; /* Zinc 400 */
+  --color-secondary-content: "#09090b"; /* Zinc 950 */
+  
+  --color-accent: "#fafafa"; /* Zinc 50 */
+  --color-accent-content: "#09090b"; /* Zinc 950 */
+  
+  --color-neutral: "#27272a"; /* Zinc 800 */
+  --color-neutral-content: "#fafafa"; /* Zinc 50 */
+  
+  --color-info: "#38bdf8";
+  --color-success: "#4ade80";
+  --color-warning: "#fbbf24";
+  --color-error: "#f87171";
 }
 
 body {
-  background: var(--color-neutral-950);
-  overscroll-behavior: none;
-  color-scheme: dark;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  margin: 0;
-  color: #d3d3d3;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-  font-size: 17px;
-  line-height: 1.5;
-  word-wrap: break-word;
-  overflow: auto;
-}
-
-.wave {
-  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
-  animation-duration: .75s;        /* Change to speed up or slow down */
-  animation-iteration-count: infinite;  /* Never stop waving :) */
-  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
-  display: inline-block;
-}
-
-@keyframes wave-animation {
-  0% { transform: rotate( 0.0deg) }
- 50% { transform: rotate(14.0deg) }
- 100% { transform: rotate( 0.0deg) }
-}
-
-.infinite-scroll {
-  animation-name: infinte-scroll;  /* Refers to the name of your @keyframes element below */
-  animation-duration: 20s;
-  animation-timing-function: linear;        /* Change to speed up or slow down */
-  animation-iteration-count: infinite;  /* Never stop waving :) */
-
-}
-
-@keyframes infinte-scroll {
-  0% {transform: translateX(0)}
-  100% {transform: translateX(calc(-50% - 20px))}
+  background-color: var(--color-black);
+  color: var(--color-base-content);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer base {
   #disqus_thread {
-    /* Reset Tailwind's custom properties so Disqus doesn't read OKLCH */
     --tw-text-opacity: 1 !important;
     --tw-bg-opacity: 1 !important;
-    color: #555555 !important;
-    background-color: #0a0a0a !important;
-  }
-
-  .dark #disqus_thread {
-    color: #0a0a0a !important;
-    background-color: #020617 !important;
+    color: var(--color-base-content) !important;
+    background-color: var(--color-black) !important;
   }
 }

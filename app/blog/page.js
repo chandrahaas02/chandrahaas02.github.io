@@ -4,10 +4,15 @@ const getGenQuote = async () => {
   // setQuote(quote=>data[0])
   return data[0]
 }
+
+export const metadata = {
+  title: 'Blog | Chandrahaas',
+  description: 'Thoughts on software engineering, design, and philosophy.',
+}
 const quote = await getGenQuote();
 export default async function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-screen">
       <div className="flex flex-col flex-1 items-center justify-center text-2xl">
         <div className="text-right">
           <p>&ldquo;{quote.q}&rdquo;</p>

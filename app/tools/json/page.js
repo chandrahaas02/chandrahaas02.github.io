@@ -240,96 +240,77 @@ export default function JsonPrettier() {
     };
 
     return (
-        <div className="flex flex-col w-screen p-5 items-center bg-neutral-950 z-10">
-            <h1 className="text-xl font-bold text-white mb-2">JSON Prettier & Diff Tracker</h1>
+        <div className="flex flex-col w-full gap-6">
+            <div className="flex items-center justify-between">
+                <h1 className="text-2xl font-bold text-white">JSON Prettier & Diff Tracker</h1>
+            </div>
 
             {/* Side by side text boxes */}
-            <div className="flex mb-6 w-full">
+            <div className="flex flex-col lg:flex-row gap-6 w-full h-[70vh]">
                 {/* Main JSON Input */}
-                <div className="rounded-lg border w-1/2 m-3">
-                    <div className="flex items-center w-full mb-4">
-                        <label className="flex-grow text-lg font-medium text-white m-2">
+                <div className="flex flex-col flex-1 h-full">
+                    <div className="flex items-center justify-between mb-2">
+                        <label className="text-sm font-mono text-zinc-500 uppercase tracking-wider">
                             JSON Editor
                         </label>
-                        <div className="flex-grow-0 flex items-center gap-2">
+                        <div className="flex items-center gap-2">
                             {processedData.isValid && (
                                 <>
-                                    <button
-                                        onClick={applyPrettified}
-                                        className="btn bg-neutral-950 rounded-lg"
-                                    >
-                                        <Sparkles size={16} className="text-gray-300" />
+                                    <button onClick={applyPrettified} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors" title="Prettify">
+                                        <Sparkles size={16} />
                                     </button>
-                                    <button
-                                        onClick={applyCompacted}
-                                        className="btn bg-neutral-950 rounded-lg"
-                                    >
-                                        <Minimize2 size={16} className="text-gray-300" />
+                                    <button onClick={applyCompacted} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors" title="Compact">
+                                        <Minimize2 size={16} />
                                     </button>
-                                    <button
-                                        onClick={() => copyToClipboard(inputJson)}
-                                        className="btn bg-neutral-950 rounded-lg"
-                                    >
-                                        {copied ? <Check size={16} className="text-gray-300" /> : <Copy size={16} className="text-gray-300" />}
+                                    <button onClick={() => copyToClipboard(inputJson)} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors" title="Copy">
+                                        {copied ? <Check size={16} /> : <Copy size={16} />}
                                     </button>
-                                    <button
-                                        onClick={setTrackingPointToCurrent}
-                                        disabled={!processedData.isValid}
-                                        className="btn bg-neutral-950 rounded-lg"
-                                    >
-                                        <GitCompare size={16} className="text-gray-300" />
+                                    <button onClick={setTrackingPointToCurrent} disabled={!processedData.isValid} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors" title="Set Tracking Point">
+                                        <GitCompare size={16} />
                                     </button>
                                 </>
                             )}
                         </div>
                     </div>
-                    <div className='w-full p-2'>
+                    <div className="flex-1 relative">
                         <textarea
                             value={inputJson}
                             onChange={(e) => setInputJson(e.target.value)}
-                            placeholder=" Enter your JSON here..."
-                            className="w-full h-[80vh] bg-neutral-900 border border-neutral-600 rounded-lg focus:border-transparent font-mono text-sm resize-none text-white"
+                            placeholder="Enter your JSON here..."
+                            className="absolute inset-0 w-full h-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-zinc-500 font-mono text-sm resize-none text-zinc-200 placeholder-zinc-600"
                         />
                     </div>
-
-
                     {error && (
-                        <div className="flex items-center gap-2 p-3 bg-red-900/30 border border-red-700 rounded-lg mt-3">
+                        <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-lg mt-2">
                             <AlertCircle size={16} className="text-red-400 flex-shrink-0" />
                             <span className="text-red-300 text-sm">{error}</span>
                         </div>
                     )}
                 </div>
 
-                {/* Tracking Point (always visible, but empty when not set) */}
-                <div className="rounded-lg border w-1/2 m-3">
-                    <div className="flex items-center justify-between mb-4">
-                        <label className="text-lg font-medium text-white m-2">
+                {/* Tracking Point */}
+                <div className="flex flex-col flex-1 h-full">
+                    <div className="flex items-center justify-between mb-2">
+                        <label className="text-sm font-mono text-zinc-500 uppercase tracking-wider">
                             Tracking Point {trackingPoint ? '(Baseline)' : '(Not Set)'}
                         </label>
                         {trackingPoint && (
                             <div className="flex items-center gap-2">
-                                <button
-                                    onClick={clearTrackingPoint}
-                                    className="btn bg-neutral-950 rounded-lg"
-                                >
-                                    <RotateCcw size={16} className="text-gray-300" />
+                                <button onClick={clearTrackingPoint} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors" title="Clear">
+                                    <RotateCcw size={16} />
                                 </button>
-                                <button
-                                    onClick={() => copyToClipboard(trackingPoint)}
-                                    className="btn bg-neutral-950 rounded-lg"
-                                >
-                                    {copied ? <Check size={16} className="text-gray-300" /> : <Copy size={16} className="text-gray-300" />}
+                                <button onClick={() => copyToClipboard(trackingPoint)} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors" title="Copy">
+                                    {copied ? <Check size={16} /> : <Copy size={16} />}
                                 </button>
                             </div>
                         )}
                     </div>
-                    <div className='w-full p-2'>
+                    <div className="flex-1 relative">
                         <textarea
                             value={trackingPoint}
                             onChange={(e) => setTrackingPoint(e.target.value)}
                             placeholder="Set a tracking point to compare changes..."
-                            className="w-full h-[80vh] bg-neutral-900 border border-neutral-600 rounded-lg focus:ring-2 focus:border-transparent font-mono text-sm resize-none text-white"
+                            className="absolute inset-0 w-full h-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-zinc-500 font-mono text-sm resize-none text-zinc-200 placeholder-zinc-600"
                         />
                     </div>
                 </div>
@@ -337,14 +318,14 @@ export default function JsonPrettier() {
 
             {/* Differences Section */}
             {trackingPoint && processedData.differences.length > 0 && (
-                <div className="w-full rounded-lg border border-neutral-900 mb-6">
+                <div className="w-full rounded-xl border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center gap-2 mb-4">
-                        <GitCompare className="text-gray-400" size={20} />
-                        <h2 className="text-xl font-semibold text-white">
+                        <GitCompare className="text-zinc-400" size={20} />
+                        <h2 className="text-lg font-semibold text-white">
                             Changes Detected ({processedData.differences.length})
                         </h2>
                     </div>
-                    <div className="grid gap-3">
+                    <div className="grid gap-2">
                         {processedData.differences.map(renderDifference)}
                     </div>
                 </div>
@@ -352,14 +333,13 @@ export default function JsonPrettier() {
 
             {/* No Differences Message */}
             {trackingPoint && processedData.isValid && processedData.differences.length === 0 && (
-                <div className=" rounded-lg border border-neutral-900 p-6">
+                <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-4">
                     <div className="flex items-center gap-2 text-green-400">
-                        <Check size={20} className="text-green-400" />
+                        <Check size={20} />
                         <span className="font-medium">No changes detected between tracking point and current JSON</span>
                     </div>
                 </div>
             )}
-
         </div>
     );
 };
