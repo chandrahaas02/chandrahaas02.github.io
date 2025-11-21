@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm'
 import markdownStyles from "@/utils/markdown-styles.module.css";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { Pen, Eye, SeparatorVertical, FolderOpen, FolderClosed, Trash } from "lucide-react";
+import { Pen, Eye, SeparatorVertical, FolderOpen, FolderClosed, Trash, Maximize2, Minimize2 } from "lucide-react";
 
 
 export default function MarkdownEditor() {
@@ -16,11 +16,21 @@ export default function MarkdownEditor() {
     const [notes, setNotes] = useState([]);
     const [showDrawer, setShowDrawer] = useState(false);
     const [viewMode, setViewMode] = useState("markdown");
+    const [isFullscreen, setIsFullscreen] = useState(false);
+    const [font, setFont] = useState("font-mono"); // font-mono, font-sans, font-serif
     const saveTimeout = useRef(null); // markdown | preview | split
 
     useEffect(() => {
         initDB();
         loadNotes();
+
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') {
+                setIsFullscreen(false);
+            }
+        };
+        window.addEventListener('keydown', handleEsc);
+        return () => window.removeEventListener('keydown', handleEsc);
     }, []);
 
     const initDB = async () => {
@@ -87,6 +97,10 @@ export default function MarkdownEditor() {
         setNote({ ...note, content: e.target.value });
     };
 
+    const toggleFullscreen = () => {
+        setIsFullscreen(!isFullscreen);
+    };
+
     const getTextWidth = (activeTab) => {
         switch (activeTab) {
             case "markdown":
@@ -115,9 +129,11 @@ export default function MarkdownEditor() {
     const currentTextWidthClass = getTextWidth(viewMode);
     const currentPreviewWidthClass = getPreviewWidth(viewMode);
 
+    const wordCount = note.content ? note.content.trim().split(/\s+/).filter(Boolean).length : 0;
+
     return (
-        <div className="flex flex-col w-full h-[calc(100vh-150px)] gap-4">
-            <div className="w-full bg-white/5 border border-white/10 rounded-xl p-2 flex items-center gap-2">
+        <div className={`flex flex-col gap-4 transition-all duration-300 ${isFullscreen ? 'fixed inset-0 z-[100] bg-black p-8' : 'w-full h-[calc(100vh-150px)]'}`}>
+            <div className={`w-full transition-all duration-300 ${isFullscreen ? 'opacity-0 hover:opacity-100' : 'opacity-100'} bg-white/5 border border-white/10 rounded-xl p-2 flex items-center gap-2`}>
                 <input
                     type="text"
                     placeholder="Untitled Note"
@@ -125,6 +141,23 @@ export default function MarkdownEditor() {
                     value={note.title}
                     onChange={(e) => setNote({ ...note, title: e.target.value })}
                 />
+
+                <div className="px-3 py-1 text-xs font-mono text-zinc-500 border-r border-white/10 mr-2">
+                    {wordCount} words
+                </div>
+
+                <div className="flex items-center gap-2 bg-black/20 rounded-lg p-1">
+                    <select
+                        className="bg-transparent text-zinc-400 text-sm focus:outline-none cursor-pointer hover:text-white px-2"
+                        value={font}
+                        onChange={(e) => setFont(e.target.value)}
+                    >
+                        <option value="font-mono">Mono</option>
+                        <option value="font-sans">Sans</option>
+                        <option value="font-serif">Serif</option>
+                    </select>
+                </div>
+
                 <div className="flex bg-black/20 rounded-lg p-1">
                     <button
                         className={`p-2 rounded-md transition-colors ${viewMode === "markdown" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
@@ -148,6 +181,15 @@ export default function MarkdownEditor() {
                         <Eye size={18} />
                     </button>
                 </div>
+
+                <button
+                    onClick={toggleFullscreen}
+                    className={`p-2 rounded-lg transition-colors ${isFullscreen ? 'text-white bg-white/10' : 'text-zinc-400 hover:text-white'}`}
+                    title={isFullscreen ? "Exit Zen Mode (Esc)" : "Enter Zen Mode"}
+                >
+                    {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+                </button>
+
                 <button
                     onClick={handleclick}
                     className="p-2 text-zinc-400 hover:text-white transition-colors"
@@ -196,13 +238,13 @@ export default function MarkdownEditor() {
                 )}
 
                 <textarea
-                    className={`textarea bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-500 h-full text-lg font-mono text-zinc-200 resize-none p-6 ${currentTextWidthClass}`}
+                    className={`textarea bg-transparent border-none focus:outline-none focus:ring-0 h-full text-lg ${font} text-zinc-200 resize-none p-6 ${currentTextWidthClass} ${isFullscreen ? 'max-w-3xl mx-auto' : ''}`}
                     onChange={handleChange}
                     value={note.content}
                     placeholder="Start writing..."
                 />
 
-                <div className={`bg-white/5 border border-white/10 rounded-xl h-full overflow-auto p-6 ${markdownStyles["markdown"]} ${currentPreviewWidthClass}`}>
+                <div className={`bg-transparent border-none h-full overflow-auto p-6 ${markdownStyles["markdown"]} ${font} ${currentPreviewWidthClass} ${isFullscreen && viewMode === 'preview' ? 'max-w-3xl mx-auto' : ''}`}>
                     <Markdown
                         children={note.content || "*No content yet!*"}
                         remarkPlugins={[remarkGfm]}
