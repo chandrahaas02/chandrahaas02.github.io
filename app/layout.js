@@ -9,7 +9,10 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 
 function NavbarItem({ children, link, active }) {
   return (
-    <Link href={link} className={`p-4 flex items-center justify-center transition-colors duration-200 rounded-xl ${active ? 'text-white bg-white/10' : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/5'}`}>
+    <Link href={link} className={`relative group p-4 flex items-center justify-center transition-colors duration-200 rounded-xl ${active ? 'text-white' : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/5'}`}>
+      {active && (
+        <div className="hidden sm:block absolute left-3 sm:left-0 top-1/2 -translate-y-1/2 w-1 h-1 sm:w-1 sm:h-6 bg-zinc-200 rounded-full sm:rounded-r-full" />
+      )}
       {children}
     </Link>
   )
@@ -21,7 +24,7 @@ function Navbar() {
   return (
     <>
       <div className="fixed z-10 bottom-0 w-full sm:w-20 sm:static flex flex-row sm:flex-col sm:h-screen justify-between border-t sm:border-t-0 sm:border-r border-white/10 bg-black backdrop-blur-md">
-        <div className="flex flex-row sm:flex-col justify-around sm:justify-start sm:gap-4 sm:p-2">
+        <div className="flex flex-row sm:flex-col w-full justify-around sm:justify-start sm:gap-4 sm:p-2">
           <NavbarItem link={"/"} active={pathname === '/'}><House size={24} /></NavbarItem>
           <NavbarItem link={"/blog"} active={pathname.split("/")[1] == 'blog'}><NotebookPen size={24} /></NavbarItem>
           <NavbarItem link={"/tools"} active={pathname.split("/")[1] === 'tools'}><Wrench size={24} /></NavbarItem>
