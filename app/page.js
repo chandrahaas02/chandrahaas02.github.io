@@ -1,13 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
-import Image from "next/image";
-import { Hovertext } from "@/components/Icon";
-import BackgroundGridTrail from "@/components/BackgroundGridTrail";
-import ProjectCard from "@/components/ProjectCard";
 import Link from 'next/link'
-import { useState, useEffect } from "react"
 import { Github, Linkedin, Mail } from "lucide-react"
 import { SiReact, SiPrometheus, SiAmazonwebservices, SiKubernetes, SiGrafana, SiNodedotjs, SiPostgresql, SiGooglecloud, SiTensorflow, SiPytorch, SiPython, SiNextdotjs, SiTailwindcss, SiDocker } from '@icons-pack/react-simple-icons';
+import GitHubStats from "@/components/GitHubStats";
 
 const ExperienceItem = ({ role, company, period, description }) => {
   return (
@@ -42,25 +38,9 @@ const TechIcon = ({ icon: Icon, name }) => (
 )
 
 export default function Home() {
-  const [country, setCountry] = useState("IN")
-
-  useEffect(() => {
-    const fetchLocation = async () => {
-      try {
-        const response = await fetch('https://ipinfo.io/?token=8266cf5458e902');
-        if (response.ok) {
-          const data = await response.json();
-          setCountry(data.country)
-        }
-      } catch (error) {
-        console.error('Error fetching location data:', error);
-      }
-    };
-    fetchLocation();
-  }, []);
 
   return (
-    <div className="flex flex-1 flex-col overflow-x-hidden bg-black selection:bg-white/20">
+    <div className="flex flex-1 flex-col overflow-x-hidden selection:bg-white/20 relative z-0">
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] w-full flex flex-col justify-center items-center text-center px-6 sm:px-12 lg:px-24 pt-20">
@@ -79,7 +59,7 @@ export default function Home() {
 
           <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10">
             I build tools, write about tech, and explore the web. <br className="hidden sm:block" />
-            Welcome to my <span className="text-zinc-200 font-medium">Crib</span>.
+            Welcome to my <span className="text-zinc-200 font-medium">space</span>.
           </p>
 
           <div className="flex gap-6 justify-center">
@@ -157,95 +137,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Activity Section */}
-      <section className="px-6 sm:px-12 lg:px-24 py-12 border-t border-white/5">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-sm font-mono text-zinc-500 mb-12 tracking-widest uppercase">Latest Activity</h2>
-
-          <div className="relative border-l border-white/10 ml-3 space-y-12">
-            {[
-              {
-                type: 'blog',
-                title: 'Exploring Temporal.io',
-                description: 'Diving deep into durable execution and reliable workflows for backend systems.',
-                date: 'Nov 2024',
-                link: '/blog/temporal',
-                tag: 'Backend'
-              },
-              {
-                type: 'tool',
-                title: 'JSON Formatter',
-                description: 'Released a new utility to validate and format JSON data.',
-                date: 'Oct 2024',
-                link: '/tools/json',
-                tag: 'Tool'
-              },
-              {
-                type: 'blog',
-                title: 'My Obsidian Workflow',
-                description: 'How I manage knowledge and notes using Obsidian and a few key plugins.',
-                date: 'Sep 2024',
-                link: '/blog/obsidian',
-                tag: 'Productivity'
-              },
-              {
-                type: 'tool',
-                title: 'Markdown Preview',
-                description: 'Built a real-time Markdown editor for content creation.',
-                date: 'Aug 2024',
-                link: '/tools/markdown',
-                tag: 'Tool'
-              },
-              {
-                type: 'blog',
-                title: 'VS Code Setup',
-                description: 'A look at my extensions, theme, and settings for 2024.',
-                date: 'Jul 2024',
-                link: '/blog/vscode',
-                tag: 'DevEnv'
-              },
-              {
-                type: 'tool',
-                title: 'Base64 Converter',
-                description: 'Simple utility for encoding and decoding Base64 strings.',
-                date: 'Jun 2024',
-                link: '/tools/base64',
-                tag: 'Tool'
-              }
-            ].map((item, index) => (
-              <div key={index} className="relative pl-8 group">
-                <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-700 group-hover:border-zinc-400 transition-colors"></div>
-                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                  <span className="text-xs font-mono text-zinc-500 mb-1 sm:mb-0">{item.date}</span>
-                  <span className="text-xs font-mono text-zinc-600 border border-zinc-800 px-2 py-0.5 rounded-full">{item.tag}</span>
-                </div>
-                <Link href={item.link} className="block group-hover:translate-x-1 transition-transform duration-300">
-                  <h3 className="text-lg font-medium text-zinc-200 group-hover:text-white transition-colors mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-zinc-500 leading-relaxed max-w-xl">
-                    {item.description}
-                  </p>
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link href="/blog" className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors border-b border-transparent hover:border-zinc-500 pb-0.5">
-              View all archives
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* GitHub Stats Section */}
+      <GitHubStats />
 
       {/* Footer */}
       <footer className="px-6 sm:px-12 lg:px-24 py-12 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-zinc-600 text-sm">© 2024 Chandrahaas. All rights reserved.</p>
+        <p className="text-zinc-600 text-sm">© 2025 Chandrahaas. All rights reserved.</p>
         <div className="flex gap-6 text-sm text-zinc-500">
-          <Link href="#" className="hover:text-zinc-300 transition-colors">Twitter</Link>
-          <Link href="#" className="hover:text-zinc-300 transition-colors">LinkedIn</Link>
-          <Link href="#" className="hover:text-zinc-300 transition-colors">GitHub</Link>
+          <Link href="https://twitter.com/chandrahaas02" className="hover:text-zinc-300 transition-colors">Twitter</Link>
+          <Link href="https://www.linkedin.com/in/chandrahaas-vakkalagadda-05b909188/" className="hover:text-zinc-300 transition-colors">LinkedIn</Link>
+          <Link href="https://github.com/chandrahaas02" className="hover:text-zinc-300 transition-colors">GitHub</Link>
         </div>
       </footer>
 
