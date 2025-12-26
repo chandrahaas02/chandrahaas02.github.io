@@ -9,14 +9,15 @@ export default function Base64() {
     const [output, setOutput] = useState("")
 
     useEffect(() => {
-        setInput(input => localStorage.getItem("base64Input"))
-    }, [])
+        const savedInput = localStorage.getItem("base64Input");
+        if (savedInput) {
+            setInput(savedInput);
+        }
+    }, []);
 
     useEffect(() => {
-        return () => {
-            window.localStorage.setItem("base64Input", input)
-        }
-    })
+        localStorage.setItem("base64Input", input);
+    }, [input]);
 
     const toggleSwitch = (e) => {
         setEncode(encode => e.target.checked)

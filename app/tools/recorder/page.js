@@ -458,8 +458,8 @@ const ScreenCameraRecorder = () => {
               onClick={setupStreams}
               disabled={isSetup}
               className={`px-6 py-3 rounded-xl font-semibold text-sm uppercase tracking-wider min-w-[160px] transition-all duration-300 ${isSetup
-                  ? 'bg-green-500/20 text-green-400 border border-green-500/30 cursor-not-allowed'
-                  : 'bg-white/10 text-white hover:bg-white/20 border border-white/10'
+                ? 'bg-green-500/20 text-green-400 border border-green-500/30 cursor-not-allowed'
+                : 'bg-white/10 text-white hover:bg-white/20 border border-white/10'
                 }`}
             >
               {isSetup ? 'Streams Ready' : 'Setup Streams'}

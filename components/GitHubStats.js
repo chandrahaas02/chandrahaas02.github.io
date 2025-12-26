@@ -1,4 +1,6 @@
-import {GitHubCalendar} from 'react-github-calendar';
+"use client"
+import dynamic from 'next/dynamic';
+const GitHubCalendar = dynamic(() => import('react-github-calendar').then(mod => mod.GitHubCalendar), { ssr: false });
 import Link from 'next/link';
 
 export default function GitHubStats() {
