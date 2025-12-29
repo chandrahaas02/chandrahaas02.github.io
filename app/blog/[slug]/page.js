@@ -18,7 +18,7 @@ export default async function Post({ params }) {
   }
 
   return (
-    <main className="max-w-3xl mx-auto px-6 sm:px-12 py-12 sm:py-24 min-h-screen">
+    <main className="max-w-3xl mx-auto min-h-screen">
       <div className="mb-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">{post.title}</h1>
 

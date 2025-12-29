@@ -1,27 +1,24 @@
-const getGenQuote = async () => {
-  const response = await fetch("https://zenquotes.io/api/random", { cache: 'no-store' });
-  const data = await response.json();
-  // setQuote(quote=>data[0])
-  return data[0]
-}
+import { getAllPosts } from "@/utils/posts"
+import BlogList from "@/components/BlogList.js"
 
 export const metadata = {
   title: 'Blog | Chandrahaas',
   description: 'Thoughts on software engineering, design, and philosophy.',
 }
-const quote = await getGenQuote();
+
 export default async function Home() {
+  const posts = getAllPosts();
+  
   return (
-    <div className="flex flex-col h-screen">
-      <div className="flex flex-col flex-1 items-center justify-center text-2xl">
-        <div className="text-right">
-          <p>&ldquo;{quote.q}&rdquo;</p>
-          <p>&ndash; {quote.a}</p>
-        </div>
+    <div className="max-w-4xl mx-auto">
+      <div className="mb-12">
+        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">Blog</h1>
+        <p className="text-lg text-zinc-400 max-w-2xl">
+          Thoughts on software engineering, design, and philosophy.
+        </p>
       </div>
-      <div className="flex-none flex mb-5 items-center justify-center">
-        <p> quotes provided by  <a href="https://zenquotes.io/" target="_blank">ZenQuotes API</a></p>
-      </div>
+      
+      <BlogList posts={posts} />
     </div>
   );
 }
